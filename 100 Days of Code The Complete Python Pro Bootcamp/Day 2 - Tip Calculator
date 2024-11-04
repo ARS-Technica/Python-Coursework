@@ -30,5 +30,8 @@ remainder = round((total_bill - (bill_per_person * people)), 2)
 # Find the answer in the Q&A here: https://www.udemy.com/course/100-days-of-code/learn/lecture/17965132#questions/13315048
 
 
-print(f"Each person should pay ${bill_per_person:.2f}.")    
+if remainder > 0:
+    print(f"Each person should pay ${bill_per_person:.2f}, with one person paying an additional ${remainder:.2f}")
+else:
+    print(f"Each person should pay ${bill_per_person:.2f}.")    
 
