@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+02 - Day 2 - Beginner - Understanding Data Types and How to Manipulate Strings
+
+Code Challenge: BMI Calculator
+
+Created on Sat Nov  2 16:42:33 2024
+"""
+
+"""
+Write a program that calculates the Body Mass Index (BMI) from a user's weight
+and height.  The BMI is a measure of some's weight taking into account their 
+height.  e.g. If a tall person and a short person both weigh the same amount,
+the short person is usually more overweight.
+
+The BMI is calculated by dividing a person's weight (in kg) by the square of 
+their height (in m):
+
+BMI = weight (kg) / height^2 (m^2)
+"""
