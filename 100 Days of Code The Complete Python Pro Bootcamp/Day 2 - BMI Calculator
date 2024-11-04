@@ -19,3 +19,14 @@ their height (in m):
 
 BMI = weight (kg) / height^2 (m^2)
 """
+
+
+# Don't change the code below
+height = input("Enter your height in meters: ")
+weight = input("Enter your weight in kilograms: ")
+# Don't change the code above
+
+bmi = round(float(weight) / float(height) ** 2)
+
+print(f"Your BMI is {bmi}")
+
