@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+02 - Day 2 - Beginner - Understanding Data Types and How to Manipulate Strings
+
+Project: Tip Calculator
+
+Created on Sat Nov  2 15:23:19 2024
+"""
+
+
+#If the bill was $150.00, split between 5 people, with 12% tip. 
+#Each person should pay (150.00 / 5) * 1.12 = 33.6
+#Round the result to 2 decimal places.
