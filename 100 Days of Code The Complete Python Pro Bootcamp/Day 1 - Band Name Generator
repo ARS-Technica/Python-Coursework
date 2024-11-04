@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 100 Days of Code The Complete Python Pro Bootcamp for 2023
 01 - Day 1 - Beginner - Working with Variables in Python to Manage Data
@@ -6,3 +7,18 @@ Project: Band Name Generator
 
 Created on Fri Nov  1 13:57:37 2024
 """
+
+#1. Create a greeting for your program.
+print("Welcome to the Great 100 Days of Code Band Name Generator!")
+
+#2. Ask the user for the city that they grew up in.
+hometown = input("What's the name of the town where you grew up? \n")
+
+#3. Ask the user for the name of a pet.
+pet = input("What was your childhood pet's name? \n")
+
+#4. Combine the name of their city and pet and show them their band name.
+print("\nYour official punk rock band name is: \n" + hometown + " " + pet +"!")
+
+#5. Make sure the input cursor shows on a new line
+
