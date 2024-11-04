@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+02 - Day 2 - Beginner - Understanding Data Types and How to Manipulate Strings
+
+Code Challenge: Life in Weeks
+
+Created on Sat Nov  2 22:51:01 2024
+"""
+
+"""
+Create a program using maths and f-Strings that tells us how many days, weeks,
+months we have left if we live until 90 years old.
+
+It will take your current age as the input and output a message with our time 
+left in this format:
+
+    "You have x days, y weeks, and z months left."
+"""
+
