@@ -12,3 +12,23 @@ Created on Sat Nov  2 15:23:19 2024
 #If the bill was $150.00, split between 5 people, with 12% tip. 
 #Each person should pay (150.00 / 5) * 1.12 = 33.6
 #Round the result to 2 decimal places.
+
+print("Welcome to the Great 100 Days of Code Tip Calculator!")
+
+
+total = float(input("What was the total of your bill? "))
+percent = int(input("What percentage would you like to tip? (10, 12, or 15 recommended): "))  / 100
+people = int(input("How many people will be splitting this bill? "))
+
+tip_subtotal = total * percent
+total_bill = total + tip_subtotal
+bill_per_person = round((total_bill / people), 2)
+remainder = round((total_bill - (bill_per_person * people)), 2)
+
+
+# FAQ: How to round to 2 decimal places?
+# Find the answer in the Q&A here: https://www.udemy.com/course/100-days-of-code/learn/lecture/17965132#questions/13315048
+
+
+print(f"Each person should pay ${bill_per_person:.2f}.")    
+
