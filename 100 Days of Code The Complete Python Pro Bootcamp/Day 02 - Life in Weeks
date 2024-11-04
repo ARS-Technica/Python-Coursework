@@ -18,3 +18,18 @@ left in this format:
     "You have x days, y weeks, and z months left."
 """
 
+
+# Don't change the code below
+age = input("What is your current age? ")
+# Don't change the code above
+
+
+years = 90 - int(age)
+days = years * 365
+months = years * 12
+weeks = years * 52
+
+
+output = f"You have {days} days, {weeks} weeks, or {months} months remaining until you're 90 years-old."
+print(output)
+
