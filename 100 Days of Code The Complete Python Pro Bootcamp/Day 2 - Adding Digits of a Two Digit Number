@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+02 - Day 2 - Beginner - Understanding Data Types and How to Manipulate Strings
+
+Code Challenge: Adding Digits of a Two Digit Number
+
+Created on Sat Nov  2 15:23:19 2024
+"""
+
+"""
+Write a program that adds the digits in a 2 digit number.  e.g. if the input
+was 35, then the output should be 3 + 5 = 8
+"""
