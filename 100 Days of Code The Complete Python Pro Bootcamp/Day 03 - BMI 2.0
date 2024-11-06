@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+03 - Day 3 - Beginner - Control Flow and Logical Operators
+
+Code Challenge: BMI 2.0
+
+Created on Sun Nov  3 21:26:57 2024
+"""
+
+"""
+Write a program that interprets the Body Mass Index (BMI) based on a user's 
+weight and height.
+
+It should tell them the interpretation of their BMI based on the BMI value.
+"""
+
