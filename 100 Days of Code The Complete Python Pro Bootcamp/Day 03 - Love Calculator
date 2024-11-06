@@ -27,3 +27,38 @@ Otherwise, the message will just be their score, e.g.:
     "Your score is z."
 """
 
+
+# Don't change the code below
+print("Welcome to the Love Calculator!")
+name1 = input("What is your name? \n")
+name2 = input("What is your name? \n")
+# Don't change the code above
+
+
+total_letters = (name1 + name2).lower()
+true_count = 0
+love_count = 0
+
+true_count += total_letters.count("t")
+true_count += total_letters.count("r")
+true_count += total_letters.count("u")
+true_count += total_letters.count("e")
+
+love_count += total_letters.count("l")
+love_count += total_letters.count("o")
+love_count += total_letters.count("v")
+love_count += total_letters.count("e")
+
+subtotal = str(true_count) + str(love_count)
+love_score = int(subtotal)
+
+#print(total_letters)
+#print(love_score)
+
+if love_score < 10 or love_score > 90:
+    print(f'Your score is {love_score}, you go together like coke and mentos.')
+elif love_score >= 40 and love_score <= 50:
+    print(f'Your score is {love_score}, you are alright together.')
+else:
+    print(f'Your score is {love_score}.')
+
