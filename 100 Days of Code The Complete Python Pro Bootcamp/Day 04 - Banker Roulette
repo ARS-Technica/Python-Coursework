@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 4 - Beginner - Randomisation and Python Lists
+
+Code Challenge: Banker Roulette
+
+Created on Mon Nov  4 19:52:48 2024
+"""
+
+"""
+You are going to write a program which will select a random name from a list 
+of names.  The person selected will have to pay for everybody's food bill.
+
+You are not allowed to use the choice() function.
+"""
+
