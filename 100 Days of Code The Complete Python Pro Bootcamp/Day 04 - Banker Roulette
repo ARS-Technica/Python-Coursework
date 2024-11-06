@@ -15,3 +15,20 @@ of names.  The person selected will have to pay for everybody's food bill.
 You are not allowed to use the choice() function.
 """
 
+
+import random
+
+# Split string method
+names_string = input("Give me everybody's names, seperated by a coma: ")
+names = names_string.split(", ")
+# Don't change the code above
+
+
+#print(random.choice(names) + " is going to buy the meal today!")
+
+banker_quantity = len(names)
+random_integer = random.randint(0, banker_quantity - 1)
+looser = names[random_integer]
+
+print(f'{looser} is going to buy the meal today!')
+
