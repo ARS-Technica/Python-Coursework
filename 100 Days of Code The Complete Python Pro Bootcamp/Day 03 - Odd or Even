@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+03 - Day 3 - Beginner - Control Flow and Logical Operators
+
+Code Challenge: Odd or Even
+
+Created on Sun Nov  3 17:31:39 2024
+"""
+
+"""
+Write a program that works out whether a given number is a odd or even number.
+
+Even numbers can be divided by 2 with no remainder.
+"""
+
