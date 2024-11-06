@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 4 - Beginner - Randomisation and Python Lists
+
+Code Challenge: Treasure Map
+
+Created on Mon Nov  4 20:25:55 2024
+"""
+
+"""
+You are going to write a program which will mark a spot with an X.
+
+The map is made of 3 rows of blank squares.
+
+Your program should allow you to enter the position of the treasure using a 
+two-digit system. The first digit is the horizontal column number and the
+second digit is the vertical row number.
+"""
+
