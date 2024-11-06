@@ -41,3 +41,34 @@ print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
 
 #Write your code below this line 👇
+
+print('You\'ve broken through the jungle treeline to find yourself standing before a narrow, gravel road.')
+print('The road passes out of view into the depths of even further jungle in both directions.')
+choice1 = input('In which direction would you like to follow the road? Type "left" or "right" \n').lower()
+
+if choice1 == "left":
+  print('After following the road through endless convolusions and switchbacks, you find yourself standing on the shore of a murky lake.')
+  print('You can neither see the bottom of the lake nor the opposite shore, but you can see a small island at it\s heart.')
+  choice2 = input('Type "wait" to wait for a boat. Type "swim" to cross on your own. \n').lower()
+
+  if choice2 == "wait":
+    print('Having successfully swam to the shore of the island, you dry yourself off before exploring further.')
+    print('At the center of the island, you find the ruins of an ancient temple, long overgrown with vines.')  
+    print('There are three doors on the exterior of the temple. One red, one yellow and one blue. ')    
+    choice3 = input('Which door do you choose to enter? Typle "red", "yellow", or "blue". \n').lower()
+
+    if choice3 == "red":
+      print('As you push at the door, a great sheet of flame envelops you. Game Over.')
+    elif choice3 == "yellow":
+      print('Within, you spy the glittering gold of a long-lost treasure in all its majesty.  Congratulations, you win!')
+    elif choice3 == "blue":
+      print('You disturb a wild beast nesting in the temple courtyard and are savaged by its razor sharp tusks. Game Over.')
+    else:
+      print('Sorry.  That\s not an option.  You\'ve chosen a door that doesn\'t exist. Game Over.')
+
+  else:
+    print('You are snapped up by an allegator lurking at the water\'s edge. Game Over.')
+
+else:
+  print('You\'ve fallen prey to a hidden pit trap! Game Over.')
+
