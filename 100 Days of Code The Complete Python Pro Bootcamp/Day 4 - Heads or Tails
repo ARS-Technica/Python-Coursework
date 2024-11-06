@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 4 - Beginner - Randomisation and Python Lists
+
+Code Challenge: Heads or Tails
+
+Created on Mon Nov  4 18:17:05 2024
+"""
+
+"""
+You are going to write a virtual coin toss program.  It will randomly tell the
+user "Heads or "Tails". 
+"""
+
