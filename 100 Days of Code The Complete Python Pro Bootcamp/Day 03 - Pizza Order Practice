@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+03 - Day 3 - Beginner - Control Flow and Logical Operators
+
+Code Challenge: Pizza Order Practice
+
+Created on Sun Nov  3 22:49:28 2024
+"""
+
+"""
+Congratulations, you've got a job at Python Pizza.  Your first job is to 
+build an automatic pizza program.
+
+Based on a user's order, work out their final bill.
+
+Small Pizza: $15
+Medium Pizza: $20
+Large Pizza: $25
+
+Pepperoni for Small Pizza: +$2
+Pepperoni for Medium or Large Pizza: +$3
+
+Extra cheese for any size pizza: +$1
+"""
+
