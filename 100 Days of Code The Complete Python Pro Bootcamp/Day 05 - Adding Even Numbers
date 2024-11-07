@@ -20,3 +20,11 @@ should just print the final total and not every step of the calculation.
 The highest score in the class is: x
 """
 
+
+total = 0
+
+for number in range(2, 101, 2):
+    total += number
+
+print(f'The sum of all the sum of all the even numbers from 1 to 100 is {total}.')
+
