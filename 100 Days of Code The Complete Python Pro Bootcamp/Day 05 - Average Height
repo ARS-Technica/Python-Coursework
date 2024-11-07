@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 5 - Beginner - Python Loops
+
+Code Challenge: Average Height
+
+Created on Tue Nov  5 18:01:16 2024
+"""
+
+"""
+You are going to write a program that calculates the average student height
+from a list of heights.
+
+e.g. student_heights = [180, 124, 165, 173, 189, 149, 146]
+
+The average height can be calculated by adding the heights together and 
+dividing by the total number of heights.
+
+e.g. 180 + 124 + 165 + 173 + 189 + 149 + 146 = 1146
+
+There are a total of 7 heights in student_heights.
+
+1146 / 7 = 163.714285
+
+Average height rounded to the nearest whole number = 164
+"""
+
+# Don't change the code below
+student_heights = input("Input a list of student heights ").split()
+for n in range(0, len(student_heights)):
+    student_heights[n] = int(student_heights[n])
+print(student_heights)
+# Don't change the code above
+
