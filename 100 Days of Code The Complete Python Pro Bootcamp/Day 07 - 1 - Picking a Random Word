@@ -20,3 +20,17 @@ word_list = ["aardvark", "baboon", "camel"]
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 """
 
+
+import random
+
+word_list = ["aardvark", "baboon", "camel"]
+chosen_word = random.choice(word_list)
+
+guess = input("Guess a letter: ").lower()
+
+for letter in chosen_word:
+    if letter == guess:
+        print(f'Congratulations.  The letter {guess} is in the word!')
+    #else:
+        #print("Sorry. Not a match.")
+
