@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 7 - Beginner - Hangman
+
+Code Challenge: Checking if the Player has Won
+
+Created on Thu Nov  7 18:29:08 2024
+"""
+
+"""
+#TODO-1: - Use a while loop to let the user guess again. The loop should only 
+stop once the user has guessed all the letters in the chosen_word and 'display' 
+has no more blanks ("_"). Then you can tell the user they've won.
+"""
+
