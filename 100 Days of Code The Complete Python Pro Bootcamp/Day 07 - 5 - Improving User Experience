@@ -1,0 +1,85 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 7 - Beginner - Hangman
+
+Code Challenge: Improving User Experience
+
+Created on Thu Nov  7 18:29:08 2024
+"""
+
+"""
+#TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
+
+#TODO-2: Import the stages from hangman_art.py and make this error go away.
+
+#TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
+
+#TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know. 
+
+#TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word
+"""
+
+
+import random
+from hangman_art import logo
+from hangman_art import stages
+from hangman_words import word_list
+
+
+#word_list = ["aardvark", "baboon", "camel"]
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
+#print(chosen_word) #For debugging
+
+display = []
+end_of_game = False
+failed_guesses = []
+lives = 6
+
+print(logo)
+
+for character in range(word_length):
+    display.append("_")
+
+while end_of_game == False:
+    guess = input("Guess a letter: ").lower()
+
+    #Check if letter has already been guessed
+    if guess in display:
+        print(f'You\'ve already guessed {guess}.  Try again.')
+
+    #Check if letter is in chosen_word
+    for position in range(word_length):
+        letter = chosen_word[position]
+
+        if letter == guess:
+            display[position] = letter
+            #print(display)
+
+    #Penalize the Player for incorrect answers
+    if guess not in chosen_word:
+        if guess in failed_guesses:
+            print(f'\nYou\'ve already guess {guess}.  Try again.\n')
+        else:
+            print(f'The letter {guess} is not in the word. \nYou are one step closer to hanging!')
+            failed_guesses.append(guess)
+
+            lives -= 1
+            print("\n\n\n\n\n")
+            print(stages[lives])
+
+    #Check is a user has run out of life.
+    if lives == 0:
+        end_of_game = True
+        print("Sorry.  You lose.")
+        break
+
+    #Show remaining spaces        
+    print(f"{' '.join(display)}")
+
+    #Check if user has got all letters.
+    if "_" not in display:
+        end_of_game = True
+        print(f'\nCongratulations! The word was {chosen_word}. You win!')  
+
