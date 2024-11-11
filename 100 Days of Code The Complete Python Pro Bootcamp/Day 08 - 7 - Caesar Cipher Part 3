@@ -19,6 +19,30 @@ shift = int(input("Type the shift number:\n"))
 #TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar(). 
 
 
+def caesar(starting_text, shift_amount, encrypt_or_decrypt):
+    final_output = ""
+
+    for letter in starting_text:
+        letter_index = alphabet.index(letter)
+
+        if encrypt_or_decrypt == "encode":
+            if letter_index + shift_amount > 25:
+                new_index = (letter_index + shift_amount) - 25
+            else:
+                new_index = letter_index + shift_amount
+        else:
+            if letter_index - shift_amount < 0:
+                new_index = (letter_index - shift_amount) + 25
+            else:
+                new_index = letter_index - shift_amount
+
+        new_letter = alphabet[new_index]
+        final_output += new_letter
+
+    print(f"Here's the {direction}ed result: {final_output}")
+
+
+'''
 def encrypt(plain_text, shift_amount):  
     encrypted_text = ""     # Save space by adding letters to a string rather than a list that needs to be joined later
 
@@ -53,15 +77,19 @@ def decrypt(encrypted_text, shift_amount):
         decrypted_text += new_letter
 
     print(f"The decoded text is '{decrypted_text}'.")
+'''
 
 
+#TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
+caesar(starting_text=text, shift_amount=shift, encrypt_or_decrypt=direction)
+
+
+'''
 if direction == "encode":
     encrypt(plain_text=text, shift_amount=shift)
 elif direction == "decode":
     decrypt(encrypted_text=text, shift_amount=shift)
 else:
     print("Sorry.  Try again.  Type 'encode' to encrypt, type 'decode' to decrypt.")
-
-
-#TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
+'''
 
