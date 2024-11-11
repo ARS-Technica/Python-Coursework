@@ -24,6 +24,14 @@ up to 2 cans.
 """
 
 
+import math
+
+def paint_calc(height, width, cover):
+    area = height * width
+    amount = math.ceil(area / cover)    # Ceiling NOT round
+    print(f"You need to purchase {amount} cans of paint.")
+
+
 # Don't change the code below
 test_h = int(input("Height of wall: "))
 test_w = int(input("Width of wall: "))
