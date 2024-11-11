@@ -21,7 +21,7 @@ def encrypt(plain_text, shift_amount):
     for letter in plain_text:
         letter_index = alphabet.index(letter)
 
-        # Mathematical solution.  Alternative, paste two sets of letters into alphabet list
+        # Mathematical solution.  Alternatively, paste two sets of letters into alphabet list
         if letter_index + shift_amount > 25:
             new_index = (letter_index + shift_amount) - 25
         else:
@@ -47,7 +47,7 @@ def decrypt(encrypted_text, shift_amount):
     for letter in encrypted_text:
         letter_index = alphabet.index(letter)
 
-        # Mathematical solution.  Alternative, paste two sets of letters into alphabet list
+        # Mathematical solution.  Alternatively, paste two sets of letters into alphabet list
         if letter_index - shift_amount < 0:
             new_index = (letter_index - shift_amount) + 25
         else:
