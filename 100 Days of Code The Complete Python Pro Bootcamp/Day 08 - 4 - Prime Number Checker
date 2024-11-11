@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 8 - Beginner - Function Parameters & Caesar Cipher
+
+Code Challenge: Prime Number Checker
+
+Created on Fri Nov  9 13:18:42 2024
+"""
+
+
+# Do NOT change any of the code below
+n = int(input("Check this number: "))
+prime_checker(number=n)
+
