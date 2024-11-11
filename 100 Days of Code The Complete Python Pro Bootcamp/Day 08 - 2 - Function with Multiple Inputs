@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 8 - Beginner - Function Parameters & Caesar Cipher
+
+Lesson: Function with Multiple Inputs
+
+Created on Fri Nov  9 13:18:37 2024
+"""
+
+"""
+# Review: 
+# Create a function called greet(). 
+# Write 3 print statements inside the function.
+# Call the greet() function and run your code.
+"""
+
+
+# Function
+# def my_function():
+    # Do this
+    # Then do this
+    # Finally do this
+
+
+# Simple Function
+# def greet():
+#     print("Welcome to the 100 Days of Code The Complete Python Pro Bootcamp for 2023!")
+#     print("This is the first code challenge of Day 8.")
+#     print("The assignment is to print three statements inside a function.")
+
+# greet()
+
+
+# Function that allows for input
+# def greet_with_name(name):  # "name" is the parameter
+#     print(f"Hello, {name}.")
+#     print(f"How do you do {name}?")
+
+# greet_with_name("Andrew")   # "Andrew" is the argument
+# greet_with_name("Billie")   # "Billie" is the argument
+
+
+# Function
+# def my_function(a, b, c):
+    # Do this with a
+    # Then do this with b
+    # Finally do this c
+
+
+# Function with multiple inputs
+def greet_with(name, location):
+    print(f"Hello {name}.")
+    print(f"What is it like in {location}?")
+
+greet_with("Jack Bauer", "New York")
+greet_with("Andrew", "Kalamazoo")
+
+
+# Keywork Arguments
+# def my_function(a=1, b=2, c=3) # Include both the parameter AND argument inside the parenthesis
+
+
+# Function with keyword arguments
+greet_with(name="Andrew", location="Kalamazoo") # Less error prone, but longer lines of code
+
