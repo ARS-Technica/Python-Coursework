@@ -9,6 +9,21 @@ Created on Fri Nov  9 13:18:42 2024
 """
 
 
+def prime_checker(number):
+    prime = True
+
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+        else:
+            continue
+
+    if prime == True:
+        print("It's a prime number.")
+    else:
+        print("It's not a prime number.")
+
+
 # Do NOT change any of the code below
 n = int(input("Check this number: "))
 prime_checker(number=n)
