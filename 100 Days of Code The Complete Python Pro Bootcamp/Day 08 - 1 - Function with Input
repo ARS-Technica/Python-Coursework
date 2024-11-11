@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 8 - Beginner - Function Parameters & Caesar Cipher
+
+Lesson: Function with Input
+
+Created on Fri Nov  9 13:18:37 2024
+"""
+
+"""
+# Review: 
+# Create a function called greet(). 
+# Write 3 print statements inside the function.
+# Call the greet() function and run your code.
+"""
+
+
+# Simple Function
+def greet():
+    print("Welcome to the 100 Days of Code The Complete Python Pro Bootcamp for 2023!")
+    print("This is the first code challenge of Day 8.")
+    print("The assignment is to print three statements inside a function.")
+
+greet()
+
+
+# Function that allows for input
+def greet_with_name(name):  # "name" is the parameter
+    print(f"Hello, {name}.")
+    print(f"How do you do {name}?")
+
+greet_with_name("Andrew")   # "Andrew" is the argument
+
+greet_with_name("Billie")   # "Billie" is the argument
+
