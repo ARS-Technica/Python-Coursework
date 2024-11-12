@@ -5,7 +5,7 @@ Day 9 - Beginner - Dictionaries, Nesting and the Secret Auction
 
 Code Challenge: Grading Program
 
-Created on Tue Nov 12 16:37:13 2024
+Created on Mon Nov 11 16:37:13 2024
 """
 
 """
@@ -35,16 +35,32 @@ student_scores = {
     "Draco": 74,
     "Neville": 62,    
 }
-
 # Don't change the code above
 
 # TODO-1: Create an empty dictionary called student_grades
-
+student_grades = {}
 
 # TODO-2: Write your code below to add the grades
-
-
+for student in student_scores:
+    #print(student)
+    score = student_scores[student]
+    
+    if score > 90:
+        student_grades[student] = "Outstanding"
+    elif score > 80:
+        student_grades[student] = "Exceeds Expectations"
+    elif score > 70:
+        student_grades[student] = "Acceptable"
+    else:
+        student_grades[student] = "Fail"
 
 # Don't change the code below
 print(student_grades)
+
+"""
+Results:
+    
+{'Harry': 'Exceeds Expectations', 'Ron': 'Acceptable', 'Hermione': 'Outstanding', 
+ 'Draco': 'Acceptable', 'Neville': 'Fail'}
+"""
 
