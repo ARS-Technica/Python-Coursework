@@ -17,12 +17,12 @@ False if it is not a leap year.
 You are then going to create a function called days_in_month() which will 
 take a year and a month and inputs.  e.g.
 
-  days_in_month(year=2022, month=2)
+days_in_month(year=2022, month=2)
 
 And it will use this information to work out the number of days in the month,
 then return that as the output. e.g.
 
-  28
+28
 
 The list month_days contains the number of days in a month from January to 
 December for a non-leap year.  A leap year has 29 days in February.
@@ -32,14 +32,14 @@ December for a non-leap year.  A leap year has 29 days in February.
 def is_leap(year):   
     if year % 4 == 0:
         if year % 100 != 0:
-            print(f"Yes, {year} is a leap year!")
+            return True
         else:
             if year % 400 == 0:
-                print(f"Yes, {year} is a leap year!")
+                return True
             else:
-                print(f"No, {year} is not a leap year!")
+                return False
     else:
-        print(f"No, {year} is not a leap year!")
+        return False
 
 
 def days_in_month():
