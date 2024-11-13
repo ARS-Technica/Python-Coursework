@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 9 - Beginner - Dictionaries, Nesting and the Secret Auction
+
+Code Challenge: Blind Auction
+
+Created on Mon Nov 11 16:37:20 2024
+"""
+
+from blind_auction_art import logo
+
+print(logo) # Show Logo
+
+auction_bids = {}
+auction_continues = True
+
+def high_bidder(bidding_record):
+    highest_bid = 0
+    winner = ""
+
+    for bidder in bidding_record:
+        bid = bidding_record[bidder]
+
+        if bid > highest_bid: 
+            highest_bid = bid
+            winner = bidder
+
+    print("\n \n \n \n \n \n \n \n \n \n \n \n \n")
+    print(f"{winner} wins this auction with the high bid of ${highest_bid}!")
+
+
+while auction_continues:
+    name = input("Enter the name of the next bidder: ")
+    price = int(input("Please enter your bid: $"))
+    auction_bids[name] = price
+    continue_auction = input("Are there any other bidders? Type 'yes or 'no': ")
+
+    if continue_auction == "no":
+        auction_continues = False
+        high_bidder(auction_bids)
+
+    elif continue_auction == "yes":
+        print("\n \n \n \n \n \n \n \n \n \n \n \n \n")
+
