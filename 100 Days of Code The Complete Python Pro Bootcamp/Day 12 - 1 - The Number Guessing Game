@@ -24,6 +24,10 @@ Created on Thu Nov 14 13:37:15 2024
 
 # Instantiate constants for number of turns for each game mode
 
+# Create a function that allows players to choose the game's difficulty level
+    # return the number of guesses permitted in a game
+    
+
 # Create a function to evaluate player's guesses
     # Reponse if the guess is higher than the target number
     # Reponse if the guess is lower than the target number
@@ -38,16 +42,16 @@ Created on Thu Nov 14 13:37:15 2024
     
     # Choose a number at random to be guessed using random choice
     
+    # Display introductory text (Welcome and rules)
+    
     # Begin while loop:
         # Show user number of guesses remaining
         # Prompt user for next guess
         # Evaluate guess (high, low, or correct)
-            # If guess correct, display victory message
-            # If guess incorrect: 
-                # If there are guesses remaining, display response
-                # If there are NOT guesses remaining, break loop
-                
-    # End game with failure message
+        # Check how many turns are remaining
+            # If there are guesses left continue with message
+            # If there are NOT guesses remaining display failure message
+
     # Ask user if he wants to play again
 
 
