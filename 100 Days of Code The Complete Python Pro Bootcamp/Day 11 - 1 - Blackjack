@@ -56,7 +56,6 @@ def deal_card(user, quantity):
     for n in range(quantity):
         user.append(choice)
 
-#print(deal_card())
 
 #Hint 6: Create a function called calculate_score() that takes a List of cards as input and returns the score. 
 #Look up the sum() function to help you do this.
@@ -100,81 +99,6 @@ def compare(user_score, comp_score):
         return f"\nSorry. You lose.\nComputer: {comp_score} You: {user_score}"
 
     print("\n")
-
-
-'''
-#Hint 13: Create a function called compare() and pass in the user_score and computer_score. 
-def compare(user_score, comp_score):
-    #print("\n")
-    
-    if user_score > 21 and comp_score > 21:
-          return "\nYou and the computer have both busted. You lose. \nComputer: " + str(comp_score) + "  You: " + str(user_score)
-
-    if user_score == 0 and comp_score == 0:
-          return "\nYou and the computer both have Blackjack!. It's a draw."
-
-
-    if user_score == comp_score:
-        #If the computer and user both have the same score, then it's a draw. 
-        return "\nIt's a a Draw \nComputer: " + str(comp_score) + " You: " + str(user_score)
-    elif comp_score == 0:
-        #If the computer has a blackjack (0), then the user loses. 
-        return "\nSorry.  You lose.  The computer has Blackjack!"
-    elif user_score == 0:
-        #If the user has a blackjack (0), then the user wins. 
-        return "\nCongratulations! You've hit Blackjack!"
-    elif user_score > 21:
-        #If the user_score is over 21, then the user loses. 
-        return "\nSorry.  You've busted. \nComputer: " + str(comp_score) + " You: " + str(user_score)
-    elif comp_score > 21:
-        #If the computer_score is over 21, then the computer loses. 
-        return "\nThe computer has busted. You win.  Congratulations! \nComputer: " + str(comp_score) + "  You: " + str(user_score)
-    elif user_score > comp_score:
-        #If none of the above, then the player with the highest score wins.
-        return "\nCongratulations!  You win! \nComputer: " + str(comp_score) + "  You: " + str(user_score)
-    else:
-        return "\nSorry.  You lose. \nComputer: " + str(comp_score) + "  You: " + str(user_score)    
-    
-    print("\n")
-'''
-
-
-'''
-#Hint 13: Create a function called compare() and pass in the user_score and computer_score. 
-def compare(user_score, comp_score):
-    print("\n")
-    
-    if user_score > 21 and comp_score > 21:
-        print("You and the computer have both busted. You lose.")
-        print(f"Computer: {comp_score}  You: {user_score}")
-    if user_score == comp_score:
-        #If the computer and user both have the same score, then it's a draw. 
-        print("It's a Draw")
-        print(f"Computer: {comp_score}  You: {user_score}")
-    elif comp_score == 0:
-        #If the computer has a blackjack (0), then the user loses. 
-        print("Sorry.  You lose.  The computer has Blackjack!")
-    elif user_score == 0:
-        #If the user has a blackjack (0), then the user wins. 
-        print("Congratulations! You've hit Blackjack!")
-    elif user_score > 21:
-        #If the user_score is over 21, then the user loses. 
-        print("Sorry.  You've busted.")
-        print(f"Computer: {comp_score}  You: {user_score}")
-    elif comp_score > 21:
-        #If the computer_score is over 21, then the computer loses. 
-        print("The computer has busted. You win.  Congratulations!")
-        print(f"Computer: {comp_score}  You: {user_score}")
-    elif user_score > comp_score:
-        #If none of the above, then the player with the highest score wins.
-        print("Congratulations!  You win!")
-        print(f"Computer: {comp_score}   You: {user_score}")
-    else:
-        print("Sorry.  You lose.")
-        print(f"Computer: {comp_score}   You: {user_score}")
-
-    print("\n")
-'''
 
 
 def play():
