@@ -49,10 +49,12 @@ import random
 from blackjack_art import logo
 
 
-def deal_card():
+def deal_card(user, quantity):
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     choice = random.choice(cards)
-    return choice
+    
+    for n in range(quantity):
+        user.append(choice)
 
 #print(deal_card())
 
@@ -114,14 +116,11 @@ while game_continues == True:
     user_cards = []
     computer_cards = []
     
-    user_cards.append(deal_card())
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
-    computer_cards.append(deal_card())
+    deal_card(user_cards, 2)
+    deal_card(computer_cards, 2)
     
     #print(user_cards)
     #print(computer_cards)
-    
 
     #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
     
