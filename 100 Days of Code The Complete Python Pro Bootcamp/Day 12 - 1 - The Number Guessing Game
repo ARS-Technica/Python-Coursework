@@ -18,3 +18,38 @@ Created on Thu Nov 14 13:37:15 2024
 # If they run out of turns, provide feedback to the player. 
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
+
+# Import random module for choosing a number
+# Import logo from a file with asci art
+
+# Instantiate constants for number of turns for each game mode
+
+# Create a function to evaluate player's guesses
+    # Reponse if the guess is higher than the target number
+    # Reponse if the guess is lower than the target number
+    # Reponse if the guess is target number (Victory condition)
+
+
+# Create a function with game logic called number_guessing_game
+    # Instantiate variable for While Loop called continue_playing
+    
+    # Instantiate variable for tracking number of guesses
+    # Instantiate variable for storing the number to be guessed
+    
+    # Choose a number at random to be guessed using random choice
+    
+    # Begin while loop:
+        # Show user number of guesses remaining
+        # Prompt user for next guess
+        # Evaluate guess (high, low, or correct)
+            # If guess correct, display victory message
+            # If guess incorrect: 
+                # If there are guesses remaining, display response
+                # If there are NOT guesses remaining, break loop
+                
+    # End game with failure message
+    # Ask user if he wants to play again
+
+
+# Call function with game logic to launch game
+
