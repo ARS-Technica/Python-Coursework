@@ -1,0 +1,111 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 12  - Beginner - Scope & Number Guessing Game
+
+Lesson: Scope 
+
+Created on Thu Nov 14 13:37:15 2024
+"""
+
+
+################### Scope ####################
+
+enemies = 1
+
+def increase_enemies():
+    enemies = 2
+    print(f"enemies inside function: {enemies}") # Output: 2
+
+increase_enemies()
+print(f"enemies outside function: {enemies}") # Output: 1
+
+
+# Local Scope
+
+def drink_potion():
+    potion_strength = 2
+    print(potion_strength) # Output: 2
+
+drink_potion()
+# print(potion_strength) # Output: potion_strength undefined
+
+
+# Global Scope
+
+player_health = 10
+
+def game():
+    def drink_potion():
+        potion_strength = 2
+        print(player_health)
+
+    drink_potion()
+
+print(player_health)
+
+
+#%%
+
+# There is no Block Scope
+
+game_level = 3
+
+# Valid code (No local scope):
+enemies = ["Skeleton", "Zombie", "Alien"]
+if game_level < 5:
+    new_enemy = enemies[0]
+
+print(new_enemy)
+
+
+# Error: new_enemy undefined
+def create_enemy():
+    enemies = ["Skeleton", "Zombie", "Alien"]
+    if game_level < 5:
+        new_enemy = enemies[0]
+
+print(new_enemy)
+
+
+# Valid scope
+def create_enemy():
+    enemies = ["Skeleton", "Zombie", "Alien"]
+    if game_level < 5:
+        new_enemy = enemies[0]
+
+    print(new_enemy)
+
+
+#%%
+
+# Modifying Global Scope
+
+enemies = 1
+
+#def increase_enemies():
+#    enemies = 2 # NEW local variable with same name as global variable
+#    print(f"enemies inside function: {enemies}") # Output: 2
+
+# This function allows you to manipulate global variables...
+# but it's bad practice to manipulate globals
+#def increase_enemies():
+#    global enemies # Now working on Global variable from outside function
+#    print(f"enemies inside function: {enemies}") # Output: 1
+#    enemies += 1
+#    print(f"enemies inside function: {enemies}") # Output: 2    
+
+# Good practice.  Works with global variables without modifying them.
+def increase_enemies():
+    print(f"enemies inside function: {enemies}") # Output: 1
+    return enemies + 1
+
+enemies = increase_enemies()
+print(f"enemies outside function: {enemies}") # Output: 2
+
+#Global Constants
+# The convention is to capitalize entire variable
+
+PI = 3.14159
+URL = "https://www.google.com"
+
