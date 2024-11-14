@@ -46,6 +46,8 @@ Created on Tue Nov 12 16:56:50 2024
 #11 is the Ace.
 #cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 import random 
+from blackjack_art import logo
+
 
 def deal_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -53,21 +55,6 @@ def deal_card():
     return choice
 
 #print(deal_card())
-
-#Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
-#user_cards = []
-#computer_cards = []
-
-user_cards = []
-computer_cards = []
-
-user_cards.append(deal_card())
-user_cards.append(deal_card())
-computer_cards.append(deal_card())
-computer_cards.append(deal_card())
-
-#print(user_cards)
-#print(computer_cards)
 
 #Hint 6: Create a function called calculate_score() that takes a List of cards as input 
 #and returns the score. 
@@ -77,7 +64,59 @@ computer_cards.append(deal_card())
 
 #Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
 
-#Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
+def calculate_score(card_list):
+    hand_score = sum(card_list)
+    
+    if hand_score == 21:
+        return 0
+    elif hand_score > 21:
+        if 11 in user_cards:
+            user_cards.remove(11)
+            user_cards.append(1)
+            calculate_score(card_list)
+        else:
+            return hand_score
+    else:
+        return hand_score
+    
+
+game_continues = True
+
+while game_continues == True:
+    #Hint 5: Deal the user and computer 2 cards each using deal_card() and append().  
+    user_cards = []
+    computer_cards = []
+    
+    user_cards.append(deal_card())
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+    computer_cards.append(deal_card())
+    
+    #print(user_cards)
+    #print(computer_cards)
+    
+
+    #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
+    
+    user_score = calculate_score(user_cards)
+    comp_score = calculate_score(computer_cards)
+    
+    if user_score == 0:
+        return "You win"
+    elif user_score > 21:
+        return "You loose"
+    elif comp_score == 0:
+        return "Computer wins"
+    else:
+        more = input("Would you like to draw another card? Y / N: ").lower()
+        
+        if more == y:
+            user_cards.append(deal_card())
+            computer_cards.append(deal_card())
+        else:
+            pass
+            # Game ends
+
 
 #Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the deal_card() function to add another card to the user_cards List. If no, then the game has ended.
 
