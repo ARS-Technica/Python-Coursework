@@ -42,9 +42,23 @@ def is_leap(year):
         return False
 
 
-def days_in_month():
+def days_in_month(year, month):
     month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
+    
+    calendar_month = month - 1
+    
+    if month > 12:
+        return "Please select a month between 1 - 12"
+    elif month < 1:
+        return "Please select a month between 1 - 12"
+    
+    if calendar_month == 1:
+        if is_leap(year) == True:
+            return 29
+        else:
+            return month_days[calendar_month]
+    else:
+        return month_days[calendar_month]
 
 # Do NOT change any of the code below
 year = int(input("Enter a year: "))
