@@ -58,83 +58,85 @@ def deal_card(user, quantity):
 
 #print(deal_card())
 
-#Hint 6: Create a function called calculate_score() that takes a List of cards as input 
-#and returns the score. 
+#Hint 6: Create a function called calculate_score() that takes a List of cards as input and returns the score. 
 #Look up the sum() function to help you do this.
-
-#Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
-
-#Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
-
 def calculate_score(card_list):
-    hand_score = sum(card_list)
+    hand_score = int(sum(card_list))
     
+    #Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
     if hand_score == 21:
         return 0
-    elif hand_score > 21:
-        if 11 in card_list:
-            card_list.remove(11)
-            card_list.append(1)
-            calculate_score(card_list)
-        else:
-            return hand_score
+
+    #Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
+    if 11 in card_list:
+        card_list.remove(11)
+        card_list.append(1)
+        calculate_score(card_list)
     else:
         return hand_score
 
-#Hint 13: Create a function called compare() and pass in the user_score and computer_score. 
 
+#Hint 13: Create a function called compare() and pass in the user_score and computer_score. 
 def compare(user_score, comp_score):
+    print("\n")
+    
     if user_score > 21 and comp_score > 21:
-          return "You and the computer have both busted. You lose. \n Computer: " + str(comp_score) + "You: " + str(user_score)
+          return "\nYou and the computer have both busted. You lose. \nComputer: " + str(comp_score) + "  You: " + str(user_score)
 
     if user_score == comp_score:
         #If the computer and user both have the same score, then it's a draw. 
-        return "It's a a Draw \n Computer: " + str(comp_score) + "You: " + str(user_score)
+        return "\nIt's a a Draw \nComputer: " + str(comp_score) + "You: " + str(user_score)
     elif comp_score == 0:
         #If the computer has a blackjack (0), then the user loses. 
-        return "Sorry.  You lose.  The computer has Blackjack!"
+        return "\nSorry.  You lose.  The computer has Blackjack!"
     elif user_score == 0:
         #If the user has a blackjack (0), then the user wins. 
-        return "Congratulations! You've hit Blackjack!"
+        return "\nCongratulations! You've hit Blackjack!"
     elif user_score > 21:
         #If the user_score is over 21, then the user loses. 
-        return "Sorry.  You've busted. \n Computer: " + str(comp_score) + "You: " + str(user_score)
+        return "\nSorry.  You've busted. \nComputer: " + str(comp_score) + "You: " + str(user_score)
     elif comp_score > 21:
         #If the computer_score is over 21, then the computer loses. 
-        return "The computer has busted. You win.  Congratulations. \n Computer: " + str(comp_score) + "You: " + str(user_score)
+        return "\nThe computer has busted. You win.  Congratulations! \nComputer: " + str(comp_score) + "  You: " + str(user_score)
     elif user_score > comp_score:
         #If none of the above, then the player with the highest score wins.
-        return "Congratulations!  You win! \n Computer: " + str(comp_score) + "You: " + str(user_score)
+        return "\nCongratulations!  You win! \nComputer: " + str(comp_score) + "  You: " + str(user_score)
     else:
-        return "Sorry.  You lose. \n Computer: " + str(comp_score) + "You: " + str(user_score)    
+        return "\nSorry.  You lose. \nComputer: " + str(comp_score) + "  You: " + str(user_score)    
+    
+    print("\n")
 
-
+ 
 def play():
+    print(logo)
     game_continues = True
 
     #Hint 5: Deal the user and computer 2 cards each using deal_card() and append().  
     user_cards = []
-    computer_cards = []
+    comp_cards = []
 
     deal_card(user_cards, 2)
-    deal_card(computer_cards, 2)
+    deal_card(comp_cards, 2)
 
     #print(user_cards)
-    #print(computer_cards)
+    #print(comp_cards)
 
     while game_continues == True:
         #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or 
         #if the user's score is over 21, then the game ends.
         
-        user_score = calculate_score(user_cards)
-        comp_score = calculate_score(computer_cards)
+        user_score = int(calculate_score(user_cards))
+        comp_score = int(calculate_score(comp_cards))
+        
+        print(f"Your hand: {user_cards} \nCurrent score: {user_score}")
+        print(f"Computer's opening card: {comp_cards[0]}")        
         
         if user_score == 0:
-            return "You win"
+            game_continues = False
         elif user_score > 21:
-            return "You loose"
+            game_continues = False
         elif comp_score == 0:
-            return "Computer wins"
+            game_continues = False
         else:
             #Hint 10: If the game has not ended, ask the user if they want to draw another card. 
             #If yes, then use the deal_card() function to add another card to the user_cards List. 
@@ -143,14 +145,16 @@ def play():
             
             if more == "y":
                 deal_card(user_cards, 1)
+                #Hint 12: Once the user is done, it's time to let the computer play. The computer should keep drawing cards as long as it has a score less than 17.
+                deal_card(comp_cards, 1)
                 #Hint 11: The score will need to be rechecked with every new card drawn and the checks in Hint 9 need to be repeated until the game ends.
                 compare(user_score, comp_score)
-                #Hint 12: Once the user is done, it's time to let the computer play. The computer should keep drawing cards as long as it has a score less than 17.
-                deal_card(computer_cards, 1)
-                compare(user_score, comp_score)
             else:
-                compare(user_score, comp_score)
                 game_continues = False
+
+    print(f"Your final hand: {user_cards} \nFinal score: {user_score}")
+    print(f"Computer's final hand: {comp_cards} \nFinal score: {comp_score}")
+    print(compare(user_score, comp_score))
 
 
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
