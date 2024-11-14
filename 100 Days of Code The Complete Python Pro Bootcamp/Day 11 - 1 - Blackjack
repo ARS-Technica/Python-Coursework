@@ -72,9 +72,9 @@ def calculate_score(card_list):
     if hand_score == 21:
         return 0
     elif hand_score > 21:
-        if 11 in user_cards:
-            user_cards.remove(11)
-            user_cards.append(1)
+        if 11 in card_list:
+            card_list.remove(11)
+            card_list.append(1)
             calculate_score(card_list)
         else:
             return hand_score
@@ -109,42 +109,47 @@ def compare(user_score, comp_score):
         return "Sorry.  You lose. \n Computer: " + comp_score + "You: " + user_score    
 
 
-game_continues = True
+def play():
+    game_continues = True
 
-while game_continues == True:
     #Hint 5: Deal the user and computer 2 cards each using deal_card() and append().  
     user_cards = []
     computer_cards = []
-    
+
     deal_card(user_cards, 2)
     deal_card(computer_cards, 2)
-    
+
     #print(user_cards)
     #print(computer_cards)
 
-    #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
-    
-    user_score = calculate_score(user_cards)
-    comp_score = calculate_score(computer_cards)
-    
-    if user_score == 0:
-        return "You win"
-    elif user_score > 21:
-        return "You loose"
-    elif comp_score == 0:
-        return "Computer wins"
-    else:
-        more = input("Would you like to draw another card? Y / N: ").lower()
+
+    while game_continues == True:
+        #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or 
+        #if the user's score is over 21, then the game ends.
         
-        if more == y:
-            user_cards.append(deal_card())
-            computer_cards.append(deal_card())
+        user_score = calculate_score(user_cards)
+        comp_score = calculate_score(computer_cards)
+        
+        if user_score == 0:
+            return "You win"
+        elif user_score > 21:
+            return "You loose"
+        elif comp_score == 0:
+            return "Computer wins"
         else:
-            pass
-            # Game ends
+            #Hint 10: If the game has not ended, ask the user if they want to draw another card. 
+            #If yes, then use the deal_card() function to add another card to the user_cards List. 
+            #If no, then the game has ended.
+            more = input("Would you like to draw another card? Y / N: ").lower()
+            
+            if more == "y":
+                user_cards.append(deal_card())
+                computer_cards.append(deal_card())
+            else:
+                pass
+                # Game ends
 
 
-#Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the deal_card() function to add another card to the user_cards List. If no, then the game has ended.
 
 #Hint 11: The score will need to be rechecked with every new card drawn and the checks in Hint 9 need to be repeated until the game ends.
 
@@ -152,4 +157,12 @@ while game_continues == True:
 
 
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+if __name__ == "__main__":
+    start = input("Would you like to play a game of Blackjack? Y/N: ").lower()
+    
+    if start == "y":
+        play()
+    else:
+        print("Thanks any way.  Hope to see you soon.")
+
 
