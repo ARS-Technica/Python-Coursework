@@ -43,12 +43,16 @@ def difficulty_mode():
         return DIFFICULT_MODE_TURNS
 
 # Create a function to evaluate player's guesses
+def compare_guess():
+    pass
     # Reponse if the guess is higher than the target number
     # Reponse if the guess is lower than the target number
     # Reponse if the guess is target number (Victory condition)
 
 
 # Create a function with game logic called number_guessing_game
+def guess_the_number():
+    pass
     # Instantiate variable for While Loop called continue_playing
     
     # Instantiate variable for tracking number of guesses
@@ -70,5 +74,14 @@ def difficulty_mode():
 
 
 # Call function with game logic to launch game
-
+#Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+if __name__ == "__main__":
+    start = input("Would you like to play a game of Guess the Number? Y/N: ").lower()
+    
+    if start == "y":
+        print(logo)
+        print("\n")
+        guess_the_number()
+    else:
+        print("Thanks any way.  Hope to see you soon.")
 
