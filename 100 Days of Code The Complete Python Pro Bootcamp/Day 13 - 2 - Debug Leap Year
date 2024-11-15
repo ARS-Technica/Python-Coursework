@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 13 - Beginner - Debugging How to Find and Fix Errors in your Code
+
+Code Challenge: Debug Leap Year
+    
+Created on Fri Nov 13 16:56:50 2024
+"""
+
+"""
+Read this code.
+Spot the problems.
+Modify the code to fix the program.
+No shortcuts - don't copy-paste to replace the code entirely with a working solution.
+
+Fix the code so that it works when you hit submit it should pass all the tests.
+"""
+
+year = int(input("Which year do you want to check? "))
+
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print("Leap year.")
+        else:
+            print("Not a leap year.")
+    else:
+        print("Leap year.")
+else:
+    print("Not leap year.")
+
