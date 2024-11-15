@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 13 - Beginner - Debugging How to Find and Fix Errors in your Code
+
+Code Challenge: Debug Odd or Even Exercise
+
+Created on Fri Nov 13 16:56:50 2024
+"""
+
+"""
+Read the code
+Spot the problems
+Modify the code to fix the program
+
+Fix the code so that it works and passes the tests when you submit.
+"""
+
+number = int(input("Which number do you want ot check?"))
+
+if number % 2 = 0:
+    print("This is an even number.")
+else:
+    print("This is an odd number.")
+
