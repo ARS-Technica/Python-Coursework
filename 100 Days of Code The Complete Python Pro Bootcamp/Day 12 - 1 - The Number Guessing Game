@@ -43,12 +43,18 @@ def difficulty_mode():
         return DIFFICULT_MODE_TURNS
 
 # Create a function to evaluate player's guesses
-def compare_guess():
-    pass
+def compare(user_guess, target_number):
     # Reponse if the guess is higher than the target number
+    if user_guess > target_number:
+        return "Too high."
     # Reponse if the guess is lower than the target number
+    elif user_guess < target_number:
+        return "Too low."
     # Reponse if the guess is target number (Victory condition)
-
+    else:
+        return "Congratulations!  You've guessed the correct number!!!"
+    
+    print("\n")
 
 # Create a function with game logic called number_guessing_game
 def guess_the_number():
