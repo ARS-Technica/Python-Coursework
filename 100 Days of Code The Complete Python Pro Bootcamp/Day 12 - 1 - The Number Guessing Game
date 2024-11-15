@@ -20,13 +20,27 @@ Created on Thu Nov 14 13:37:15 2024
 
 
 # Import random module for choosing a number
+import random
 # Import logo from a file with asci art
+from number_guessing_art import logo
 
 # Instantiate constants for number of turns for each game mode
+EASY_MODE_TURNS = 10
+DIFFICULT_MODE_TURNS = 5
 
 # Create a function that allows players to choose the game's difficulty level
     # return the number of guesses permitted in a game
-    
+def difficulty_mode():
+    print("A random number has been chosen from 1 - 100.")
+    print("Your objective is to correctly guess the number.")
+    print("\n")
+
+    if input("Choose your difficulty setting: Would you like game to be Easy or Difficult? ").lower == 'easy':
+        print("You will have 10 chances to guess the correct number.  Good Luck!")
+        return EASY_MODE_TURNS
+    else:
+        print("You will have only 5 chances to guess the correct number.  Good Luck!")
+        return DIFFICULT_MODE_TURNS
 
 # Create a function to evaluate player's guesses
     # Reponse if the guess is higher than the target number
@@ -56,4 +70,5 @@ Created on Thu Nov 14 13:37:15 2024
 
 
 # Call function with game logic to launch game
+
 
