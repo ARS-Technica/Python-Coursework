@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+"""
+100 Days of Code The Complete Python Pro Bootcamp for 2023
+Day 13 - Beginner - Debugging How to Find and Fix Errors in your Code
+
+Code Challenge: Debug FizzBuzz
+    
+Created on Fri Nov 13 16:56:50 2024
+"""
+
+"""
+Read this code.
+Spot the problems.
+Modify the code to fix the program.
+No shortcuts - don't copy-paste to replace the code entirely with a working solution.
+
+The code needs to print the solution to the FizzBuzz games.
+"""
+
+
+for number in range(1, 101):
+    if number % 3 == 0 and number % 5 == 0:
+        print("FizzBuzz")
+    elif (number % 3 == 0):
+        print("Fizz")
+    elif (number % 5 == 0):
+        print("Buzz")
+    else:
+        print(number)
+
