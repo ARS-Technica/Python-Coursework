@@ -8,3 +8,36 @@ Project: Higher Lower Game
 Created on Fri Nov 13 16:56:50 2024
 """
 
+# http://www.higherlowergame.com/
+
+# Import random module for choosing Google Searches
+# Import logo from a file with asci art
+
+
+# Create a function to evaluate player's guesses
+    # Reponse if the guess is correct (the higher user count)
+    # Reponse if the guess is wrong (the lower user count)
+    # Reponse if the guess is not one of the two options
+
+      
+# Create a function with game logic
+    # Instantiate variable to keep game running (while loop)
+    # Instantiate variable for tracking number of correct guesses (Score)
+    # Instantiate variable for storing the user count of the choice guessed
+
+    # Choose a pair of options to be compared at random using random choice
+
+    # Begin while loop:    
+        # Prompt user for next guess
+
+        # Evaluate guess (function call)
+            # If correct, increment Score up
+            # If wrong, break loop
+            
+    # Prompt user whether or not he would like to play again
+        # If yes, call function
+        # If no, print farewell message
+
+
+# Call function with game logic to launch game
+
