@@ -13,7 +13,7 @@ import random
 # Import dataset for comparisons
 from higher_lower_game_data import data
 # Import logo from a file with asci art
-from higher_lower_art_art import logo
+from higher_lower_art import logo
 
 
 # Instantiate a variable for the maximum length of the array stored in higher_lower_game_data
@@ -36,19 +36,22 @@ def choose_random_integers():
 
 
 # Create a function to evaluate player's guesses
-def evaluate_guess(guess, remaining_choice):
+def evaluate_guess(guess, remaining_choice, correct_guesses, game_continues):
     # Reponse if the guess is correct (the higher user count)
     if guess['follower_count'] > remaining_choice['follower_count']:
-        print("Correct!")
+        print(f"Correct! {guess['name']} has guess['follower_count'] million Instram followers.")
+        return correct_guesses + 1
     # Reponse if the guess is wrong (the lower user count)
     else:
-        print("Wrong.")
+        print(f"Wrong. {guess['name']} only has guess['follower_count'] million Instram followers.")
+        print(f"{guess['name']} has guess['follower_count'] million Instram followers.")
+        return game_continues - 1
 
-      
+
 # Create a function with game logic
 def higher_lower_game():
     # Instantiate variable to keep game running (while loop)
-    game_continues = True
+    game_continues = 1
     # Instantiate variable for tracking number of correct guesses (Score)
     correct_guesses = 0
 
@@ -58,7 +61,7 @@ def higher_lower_game():
     # Print introductory text
     print("Welcome to the Higher Lower Game!")
     print("Each round, you will be presented with two celebrities.")
-    print("You must choose which of the celebrities has more Instagram follower.\n")
+    print("You must choose which of the celebrities has more Instagram followers.\n")
 
     # Choose a pair of options to be compared at random using random choice
     first, second = choose_random_integers() # Integers that aren't identical
@@ -66,11 +69,13 @@ def higher_lower_game():
     second_choice = data[second] 
     
     # Print a hint for debugging purposes
+    print("Hint:")
     print("First: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
     print("Second: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
+    print("\n")
     
     # Begin while loop
-    while game_continues == True:
+    while game_continues == 1:
         # Display choices
         print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
         print("versus")
@@ -81,17 +86,20 @@ def higher_lower_game():
 
         # Evaluate guess (function call)
         if guess == "a":
-            evaluate_guess(data[first], data[second])
+            evaluate_guess(data[first], data[second], correct_guesses, game_continues)
         else:
-            evaluate_guess(data[second], data[first])          
+            evaluate_guess(data[second], data[first], correct_guesses, game_continues)         
             # If correct, increment Score up
             # If wrong, break loop
             
     # Prompt user whether or not he would like to play again
+    if input("Would you like to play again? Y/N ").lower() == "y":
         # If yes, call function
-        # If no, print farewell message
-    
-        pass
+        print("\n")
+        higher_lower_game()
+    # If no, print farewell message
+    else:
+        print("Thanks anyway.  Hope to see you again soon.")
 
 
 # Call function with game logic to launch game
