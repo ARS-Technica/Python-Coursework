@@ -46,22 +46,33 @@ def evaluate_guess(guess, remaining_choice, correct_guesses, game_continues):
         return False
 
 
+def format_choice(choice):
+    """Format account into printable format: name, description and country"""
+    name = data[choice]["name"]
+    description = data[choice]["description"]
+    country = data[choice]["country"]
+    # print(f'{name}: {account["follower_count"]}')
+    return f"{name}, a {description}, from {country}"
+    # print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
+
+
+def new_choices(first_choice, second_choice):
+    first_choice = second_choice
+    # Ensure that the two integers aren't the same
+    while second_choice == first_choice:
+        second_choice = choose_random_integers()
+    return first_choice, second_choice
+    
+
 # Create a function with game logic
 def higher_lower_game():
-    # Instantiate variable to keep game running (while loop)
-    game_continues = True
-
-    # Choose a pair of options to be compared at random using random choice
-    first = choose_random_integers()
-    second = first
-    
-    # Ensure that the two integers aren't the same
-    while second == first:
-        second = choose_random_integers()
-        
     # Instantiate variable for tracking number of correct guesses (Score)
     correct_guesses = 0
-
+    # Instantiate variable to keep game running (while loop)
+    game_continues = True
+    # Choose a pair of options to be compared at random using random choice
+    first, second = new_choices(choose_random_integers(), choose_random_integers())
+        
     # Print logo
     print(logo)
     
@@ -71,15 +82,9 @@ def higher_lower_game():
     print("You must guess which of the celebrities has more Instagram followers.\n\n")
    
     # Begin while loop
-    while game_continues == True:         
-        # Print a hint for debugging purposes
-        # print("First: ", first_choice['name'], first_choice['follower_count']) # Print statement for debugging
-        # print("Second: ", second_choice['name'], second_choice['follower_count']) # Print statement for debugging        
-        
+    while game_continues == True:
         # Display choices
-        print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
-        print(vs, "\n")
-        print(f"Against B: {data[second]['name']}, a {data[second]['description']}, from {data[second]['country']}\n")
+        print(f"Compare A: {format_choice(first)}", vs, f"\nAgainst B: {format_choice(second)}\n")
        
         # Prompt user for next guess
         guess = input("Who has more followers?  Select A or B: ").lower()
@@ -90,21 +95,18 @@ def higher_lower_game():
                 # If correct, increment Score up
                 correct_guesses += 1
                 print(f"You've now made {correct_guesses} correct guesses!\n\n")
-                
-                first = second
-                second = choose_random_integers()
+                # Change choices for next round
+                first, second = new_choices(first, second)
             else:
                 # If wrong, break loop
-                # return
                 game_continues = False
         elif guess == "b":
             if evaluate_guess(data[second], data[first], correct_guesses, game_continues) == True:
                 # If correct, increment Score up
                 correct_guesses += 1
                 print(f"You've now made {correct_guesses} correct guesses!\n\n")
-                
-                first = second
-                second = choose_random_integers()
+                # Change choices for next round
+                first, second = new_choices(first, second)
             else:
                 # If wrong, break loop
                 game_continues = False
