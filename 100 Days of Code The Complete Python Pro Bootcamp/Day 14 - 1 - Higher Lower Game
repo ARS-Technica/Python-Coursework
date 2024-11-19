@@ -9,11 +9,30 @@ Created on Fri Nov 13 16:56:50 2024
 """
 
 # Import random module for choosing Google Searches
-from random import randint
+import random
 # Import dataset for comparisons
 from higher_lower_game_data import data
 # Import logo from a file with asci art
 from higher_lower_art_art import logo
+
+
+# Instantiate a variable for the maximum length of the array stored in higher_lower_game_data
+LENGTH_OF_DATA = 50
+
+
+# Create a function to randomly select two indexes that aren't identical
+def choose_random_integers():
+    """Choose two different random integers from the range [start, end]."""
+    maximum_index = LENGTH_OF_DATA - 1 # To avoid IndexError
+
+    first = random.randint(0, maximum_index)
+    second = random.randint(0, maximum_index)
+
+    # Ensure that the two integers aren't the same
+    while second == first:
+        second = random.randint(start, maximum_index)
+
+    return first, second
 
 
 # Create a function to evaluate player's guesses
@@ -25,14 +44,31 @@ def evaluate_guess():
 
       
 # Create a function with game logic
-def game():
+def higher_lower_game():
     # Instantiate variable to keep game running (while loop)
+    game_continues = True
     # Instantiate variable for tracking number of correct guesses (Score)
-    # Instantiate variable for storing the user count of the choice guessed
+    correct_guesses = 0
+
+    # Print logo
+    print(logo)
+    
+    # Print introductory text
+    print("Welcome to the Higher Lower Game!")
+    print("Each round, you will be presented with two celebrities.")
+    print("You must choose which of the celebrities has more Instagram follower.\n")
 
     # Choose a pair of options to be compared at random using random choice
-
-    # Begin while loop:    
+    first, second = choose_random_integers() # Integers that aren't identical
+    first_choice = data[first]
+    second_choice = data[second] 
+    
+    # Print a hint for debugging purposes
+    print("First: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
+    print("Second: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
+    
+    # Begin while loop:
+        # Display choices
         # Prompt user for next guess
 
         # Evaluate guess (function call)
@@ -47,5 +83,5 @@ def game():
 
 
 # Call function with game logic to launch game
-game()
+higher_lower_game()
 
