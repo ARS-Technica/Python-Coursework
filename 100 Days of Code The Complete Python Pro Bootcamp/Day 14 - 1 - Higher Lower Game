@@ -36,11 +36,13 @@ def choose_random_integers():
 
 
 # Create a function to evaluate player's guesses
-def evaluate_guess():
+def evaluate_guess(guess, remaining_choice):
     # Reponse if the guess is correct (the higher user count)
+    if guess['follower_count'] > remaining_choice['follower_count']:
+        print("Correct!")
     # Reponse if the guess is wrong (the lower user count)
-    # Reponse if the guess is not one of the two options
-    pass
+    else:
+        print("Wrong.")
 
       
 # Create a function with game logic
@@ -67,11 +69,21 @@ def higher_lower_game():
     print("First: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
     print("Second: ", data[0]['name'], data[0]['follower_count']) # Print statement for debugging
     
-    # Begin while loop:
+    # Begin while loop
+    while game_continues == True:
         # Display choices
+        print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
+        print("versus")
+        print(f"Against B: {data[second]['name']}, a {data[second]['description']}, from {data[second]['country']}")
+       
         # Prompt user for next guess
+        guess = input("Who has more followers?  Select A or B: ").lower()
 
         # Evaluate guess (function call)
+        if guess == "a":
+            evaluate_guess(data[first], data[second])
+        else:
+            evaluate_guess(data[second], data[first])          
             # If correct, increment Score up
             # If wrong, break loop
             
@@ -79,7 +91,7 @@ def higher_lower_game():
         # If yes, call function
         # If no, print farewell message
     
-    pass
+        pass
 
 
 # Call function with game logic to launch game
