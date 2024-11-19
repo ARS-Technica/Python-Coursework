@@ -45,6 +45,7 @@ def evaluate_guess(guess, remaining_choice, correct_guesses, game_continues):
         print(f"{remaining_choice['name']} has {remaining_choice['follower_count']} million Instagram followers.")
         return False
 
+
 # Create a function with game logic
 def higher_lower_game():
     # Instantiate variable to keep game running (while loop)
@@ -111,21 +112,17 @@ def higher_lower_game():
             print("Sorry.  I couldn't understand that input.  Try again.")
             game_continues = False
 
+    # Prompt user whether or not he would like to play again
+    if input("Would you like to play again? Y/N ").lower() == "y":
+        # If yes, call function
+        print("\n")
+        higher_lower_game()
+    # If no, print farewell message
+    else:
+        print("Thanks anyway.  Hope to see you again soon.")
+        return
+
 
 if __name__ == "__main__":
-    play_again = True
-    
-    while play_again == True:
-        # Call function with game logic to launch game
-        higher_lower_game()
-
-        # Prompt user whether or not he would like to play again
-        if input("Would you like to play again? Y/N ").lower() == "y":
-            # If yes, call function
-            print("\n")
-            higher_lower_game()
-        # If no, print farewell message
-        else:
-            print("Thanks anyway.  Hope to see you again soon.")
-            play_again = False
+    higher_lower_game()
 
