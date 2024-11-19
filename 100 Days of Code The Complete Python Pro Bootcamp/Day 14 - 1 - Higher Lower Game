@@ -40,22 +40,22 @@ def choose_random_integers():
 def evaluate_guess(guess, remaining_choice, correct_guesses, game_continues):
     # Reponse if the guess is correct (the higher user count)
     if guess['follower_count'] > remaining_choice['follower_count']:
+        print("\n")
         print(f"Correct! {guess['name']} has {guess['follower_count']} million Instagram followers.")
-        print(f"{remaining_choice['name']} only has {remaining_choice['follower_count']} million Instagram followers.")        
-        print("\n")        
+        print(f"{remaining_choice['name']} only has {remaining_choice['follower_count']} million Instagram followers.")       
         return True
     # Reponse if the guess is wrong (the lower user count)
     else:
+        print("\n")        
         print(f"Wrong. {guess['name']} only has {guess['follower_count']} million Instagram followers.")
         print(f"{remaining_choice['name']} has {remaining_choice['follower_count']} million Instagram followers.")
-        print("\n") 
         return False
 
 
 # Create a function with game logic
 def higher_lower_game():
     # Instantiate variable to keep game running (while loop)
-    game_continues = 1
+    game_continues = True
     # Instantiate variable for tracking number of correct guesses (Score)
     correct_guesses = 0
 
@@ -65,10 +65,10 @@ def higher_lower_game():
     # Print introductory text
     print("Welcome to the Higher Lower Game!")
     print("Each round, you will be presented with two celebrities.")
-    print("You must guess which of the celebrities has more Instagram followers.\n")
+    print("You must guess which of the celebrities has more Instagram followers.\n\n")
    
     # Begin while loop
-    while game_continues == 1:
+    while game_continues == True:
         # Choose a pair of options to be compared at random using random choice
         first, second = choose_random_integers() # Integers that aren't identical
          
@@ -89,7 +89,7 @@ def higher_lower_game():
             if evaluate_guess(data[first], data[second], correct_guesses, game_continues) == True:
                 # If correct, increment Score up
                 correct_guesses += 1
-                print(f"You've made {correct_guesses} correct guesses!\n")
+                print(f"You've now made {correct_guesses} correct guesses!\n\n")
             else:
                 # If wrong, break loop
                 return
@@ -97,7 +97,7 @@ def higher_lower_game():
             if evaluate_guess(data[second], data[first], correct_guesses, game_continues) == True:
                 # If correct, increment Score up
                 correct_guesses += 1
-                print(f"You've made {correct_guesses} correct guesses!")
+                print(f"You've now made {correct_guesses} correct guesses!\n\n")
             else:
                 # If wrong, break loop
                 return
@@ -107,15 +107,19 @@ def higher_lower_game():
 
 
 if __name__ == "__main__":
-    # Call function with game logic to launch game
-    higher_lower_game()
-
-    # Prompt user whether or not he would like to play again
-    if input("Would you like to play again? Y/N ").lower() == "y":
-        # If yes, call function
-        print("\n")
+    play_again = True
+    
+    while play_again == True:
+        # Call function with game logic to launch game
         higher_lower_game()
-    # If no, print farewell message
-    else:
-        print("Thanks anyway.  Hope to see you again soon.")
+
+        # Prompt user whether or not he would like to play again
+        if input("Would you like to play again? Y/N ").lower() == "y":
+            # If yes, call function
+            print("\n")
+            higher_lower_game()
+        # If no, print farewell message
+        else:
+            print("Thanks anyway.  Hope to see you again soon.")
+            play_again = False
 
