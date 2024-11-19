@@ -18,39 +18,21 @@ from higher_lower_art import logo
 from higher_lower_art import vs
 
 
-# Instantiate a variable for the maximum length of the array stored in higher_lower_game_data
-LENGTH_OF_DATA = 50
-
-
-# Create a function to randomly select two indexes that aren't identical
-def choose_random_integers():
-    """Choose two different random integers from the range [start, end]."""
-    maximum_index = LENGTH_OF_DATA - 1 # To avoid IndexError
-    n = random.randint(0, maximum_index)
-    return n
-
-
 # Create a function to evaluate player's guesses
-def evaluate_guess(guess, remaining_choice, correct_guesses, game_continues):
-    # Reponse if the guess is correct (the higher user count)
-    if guess['follower_count'] > remaining_choice['follower_count']:
-        print("\n")
-        print(f"Correct! {guess['name']} has {guess['follower_count']} million Instagram followers.")
-        print(f"{remaining_choice['name']} only has {remaining_choice['follower_count']} million Instagram followers.")       
-        return True
-    # Reponse if the guess is wrong (the lower user count)
+def evaluate_guess(guess, option_a, option_b):
+    # Reponse if the first choice has the higher user count
+    if option_a > option_b:
+        return guess == "a" # True or False
+    # Reponse if the second choice has the higher user count
     else:
-        print("\n")        
-        print(f"Wrong. {guess['name']} only has {guess['follower_count']} million Instagram followers.")
-        print(f"{remaining_choice['name']} has {remaining_choice['follower_count']} million Instagram followers.")
-        return False
+        return guess == "b" # True or False
 
 
 def format_choice(choice):
     """Format account into printable format: name, description and country"""
-    name = data[choice]["name"]
-    description = data[choice]["description"]
-    country = data[choice]["country"]
+    name = choice["name"]
+    description = choice["description"]
+    country = choice["country"]
     # print(f'{name}: {account["follower_count"]}')
     return f"{name}, a {description}, from {country}"
     # print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
@@ -60,10 +42,24 @@ def new_choices(first_choice, second_choice):
     first_choice = second_choice
     # Ensure that the two integers aren't the same
     while second_choice == first_choice:
-        second_choice = choose_random_integers()
+        second_choice = random.choice(data)
     return first_choice, second_choice
-    
 
+
+def prompt_user(first_choice, second_choice):
+    # Prompt user for next guess
+    guess = input("Who has more followers?  Select A or B: ").lower()
+    
+    if guess == "a" or guess == "b":
+        option_a = first_choice["follower_count"]
+        option_b = second_choice["follower_count"]
+     
+        return evaluate_guess(guess, option_a, option_b)
+    else:
+        print("Sorry.  I couldn't understand that input.  Try again.")
+        prompt_user(first_choice, second_choice)
+
+      
 # Create a function with game logic
 def higher_lower_game():
     # Instantiate variable for tracking number of correct guesses (Score)
@@ -71,47 +67,39 @@ def higher_lower_game():
     # Instantiate variable to keep game running (while loop)
     game_continues = True
     # Choose a pair of options to be compared at random using random choice
-    first, second = new_choices(choose_random_integers(), choose_random_integers())
+    first, second = random.choice(data), random.choice(data)
+    while first == second:
+        second = random.choice(data)
         
     # Print logo
     print(logo)
     
     # Print introductory text
     print("Welcome to the Higher Lower Game!")
-    print("Each round, you will be presented with two celebrities.")
-    print("You must guess which of the celebrities has more Instagram followers.\n\n")
+    print("Each round, you will be presented with two Instagram Accounts.")
+    print("You must guess which of the accounts has more followers.\n\n")
    
     # Begin while loop
     while game_continues == True:
+        # Change choices for next round
+        first = second
+        while first == second:
+            second = random.choice(data)
+        
         # Display choices
         print(f"Compare A: {format_choice(first)}", vs, f"\nAgainst B: {format_choice(second)}\n")
        
-        # Prompt user for next guess
-        guess = input("Who has more followers?  Select A or B: ").lower()
+        correct_answer = prompt_user(first, second)
         
         # Evaluate guess (function call)
-        if guess == "a":
-            if evaluate_guess(data[first], data[second], correct_guesses, game_continues) == True:
-                # If correct, increment Score up
-                correct_guesses += 1
-                print(f"You've now made {correct_guesses} correct guesses!\n\n")
-                # Change choices for next round
-                first, second = new_choices(first, second)
-            else:
-                # If wrong, break loop
-                game_continues = False
-        elif guess == "b":
-            if evaluate_guess(data[second], data[first], correct_guesses, game_continues) == True:
-                # If correct, increment Score up
-                correct_guesses += 1
-                print(f"You've now made {correct_guesses} correct guesses!\n\n")
-                # Change choices for next round
-                first, second = new_choices(first, second)
-            else:
-                # If wrong, break loop
-                game_continues = False
+        if correct_answer:             
+            # If correct, increment Score up
+            correct_guesses += 1
+            print(f"You've now made {correct_guesses} correct guesses!\n\n")
         else:
-            print("Sorry.  I couldn't understand that input.  Try again.")
+            print("\n")
+            print(f"Sorry, wrong answer. Your final score: {correct_guesses} correct guesses.")            
+            # If wrong, break loop
             game_continues = False
 
     # Prompt user whether or not he would like to play again
