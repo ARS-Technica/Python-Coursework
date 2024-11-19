@@ -8,9 +8,11 @@ Project: Higher Lower Game
 Created on Fri Nov 13 16:56:50 2024
 """
 
-
+# Import os library to clear screen between rounds
+import os
 # Import random module for choosing Google Searches
 import random
+import time # To pause between response to user input and new screen
 # Import dataset for comparisons
 from higher_lower_game_data import data
 # Import logo from a file with asci art
@@ -68,16 +70,14 @@ def new_choices(first_choice, second_choice):
 
 
 def prompt_user(first_choice, second_choice):
-    # Prompt user for next guess
-    guess = input("Who has more followers?  Select A or B: ").lower()
-    
-    if guess == "a" or guess == "b":    
-        return evaluate_guess(guess, first_choice, second_choice)
-    else:
-        print("Sorry.  I couldn't understand that input.  Try again.")
-        prompt_user(first_choice, second_choice)
+    while True:
+        guess = input("Who has more followers? Select A or B: ").lower()
+        if guess in ["a", "b"]:
+            return evaluate_guess(guess, first_choice, second_choice)
+        else:
+            print("Invalid input. Please enter 'a' or 'b'.")
 
-      
+
 # Create a function with game logic
 def higher_lower_game():
     # Instantiate variable for tracking number of correct guesses (Score)
@@ -114,6 +114,10 @@ def higher_lower_game():
             # If correct, increment Score up
             correct_guesses += 1
             print(f"You've now made {correct_guesses} correct guesses!\n\n")
+            
+            time.sleep(3)
+            os.system('cls')  # Clear the screen before the next round
+            print(logo)
         else:
             print(f"Your final score was {correct_guesses} correct guesses.")            
             # If wrong, break loop
@@ -128,7 +132,6 @@ def higher_lower_game():
     else:
         print("Thanks anyway.  Hope to see you again soon.")
         return
-
 
 if __name__ == "__main__":
     higher_lower_game()
