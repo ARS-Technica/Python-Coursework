@@ -65,26 +65,51 @@ def higher_lower_game():
     # Print introductory text
     print("Welcome to the Higher Lower Game!")
     print("Each round, you will be presented with two celebrities.")
-    print("You must choose which of the celebrities has more Instagram followers.\n")
+    print("You must guess which of the celebrities has more Instagram followers.\n")
    
     # Begin while loop
     while game_continues == 1:
         # Choose a pair of options to be compared at random using random choice
         first, second = choose_random_integers() # Integers that aren't identical
-        first_choice = data[first]
-        second_choice = data[second] 
-        
+         
         # Print a hint for debugging purposes
-        print("First: ", first_choice['name'], first_choice['follower_count']) # Print statement for debugging
-        print("Second: ", second_choice['name'], second_choice['follower_count']) # Print statement for debugging        
+        # print("First: ", first_choice['name'], first_choice['follower_count']) # Print statement for debugging
+        # print("Second: ", second_choice['name'], second_choice['follower_count']) # Print statement for debugging        
         
         # Display choices
         print(f"Compare A: {data[first]['name']}, a {data[first]['description']}, from {data[first]['country']}")
         print(vs, "\n")
         print(f"Against B: {data[second]['name']}, a {data[second]['description']}, from {data[second]['country']}\n")
        
-        player_choice(first, second, correct_guesses, game_continues)
-            
+        # Prompt user for next guess
+        guess = input("Who has more followers?  Select A or B: ").lower()
+        
+        # Evaluate guess (function call)
+        if guess == "a":
+            if evaluate_guess(data[first], data[second], correct_guesses, game_continues) == True:
+                # If correct, increment Score up
+                correct_guesses += 1
+                print(f"You've made {correct_guesses} correct guesses!\n")
+            else:
+                # If wrong, break loop
+                return
+        elif guess == "b":
+            if evaluate_guess(data[second], data[first], correct_guesses, game_continues) == True:
+                # If correct, increment Score up
+                correct_guesses += 1
+                print(f"You've made {correct_guesses} correct guesses!")
+            else:
+                # If wrong, break loop
+                return
+        else:
+            print("Sorry.  I couldn't understand that input.  Try again.")
+            return
+
+
+if __name__ == "__main__":
+    # Call function with game logic to launch game
+    higher_lower_game()
+
     # Prompt user whether or not he would like to play again
     if input("Would you like to play again? Y/N ").lower() == "y":
         # If yes, call function
@@ -93,36 +118,4 @@ def higher_lower_game():
     # If no, print farewell message
     else:
         print("Thanks anyway.  Hope to see you again soon.")
-
-
-def player_choice(first, second, correct_guesses, game_continues):
-    # Prompt user for next guess
-    guess = input("Who has more followers?  Select A or B: ").lower()
-    
-    # Evaluate guess (function call)
-    if guess == "a":
-        if evaluate_guess(data[first], data[second], correct_guesses, game_continues) == True:
-            # If correct, increment Score up
-            correct_guesses += 1
-            print(f"You've made {correct_guesses} correct guesses!")
-            return correct_guesses
-        else:
-            # If wrong, break loop
-            return
-    elif guess == "b":
-        if evaluate_guess(data[second], data[first], correct_guesses, game_continues) == True:
-            # If correct, increment Score up
-            correct_guesses += 1
-            print(f"You've made {correct_guesses} correct guesses!")
-            return correct_guesses
-        else:
-            # If wrong, break loop
-            return
-    else:
-        print("Sorry.  I could understand that input.  Try again.")
-        player_choice()
-
-
-# Call function with game logic to launch game
-higher_lower_game()
 
