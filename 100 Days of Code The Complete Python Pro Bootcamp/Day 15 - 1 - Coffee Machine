@@ -41,15 +41,30 @@ resources = {
     "coffee": 100,
 }
 
+"""
+print(MENU["espresso"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
+print(MENU["espresso"]["ingredients"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
+print(MENU["espresso"]["ingredients"]["water"]) # 50
+print(MENU["espresso"]["ingredients"]["milk"]) # KeyError: 'milk'
+
+print(MENU["espresso"]["cost"]) # 1.5
+"""
+
 
 # TODO: 3. Check if resources are sufficient for order
 # Create function to check inventory
-def check_inventory():
+def check_inventory(order):
     # Load dictionary of inventory into variables
-        # Compare water inventory to required water
-        # Compare milk inventory to required milk
-        # Compare coffee inventory to required coffee
-    # Return True
+    # inventory_water, inventory_milk, inventory_coffee = resources["water"], resources["milk"], resources["coffee"]
+
+    # Compare each ingredient amount to inventory amount
+    for ingredient in order["ingredients"]:
+        if order["ingredients"][ingredient]  <= resources[ingredient]:
+            continue
+        else:
+            print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
+            Return False
+    Return True
 
 # Create function for payment
 def payment():
@@ -88,12 +103,15 @@ def coffee_machine():
             # Print out current inventory of resources
         # If "espresso"
             # Check if resources sufficient
+            check_inventory(order)
             # Deduct ingredients of selection from current resources
         # If "latte"
             # Check if resources sufficient
+            check_inventory(order)
             # Deduct ingredients of selection from current resources
         # If "cappuccino"
             # Check if resources sufficient
+            check_inventory(order)
             # Deduct ingredients of selection from current resources
 
     # TODO: 7. "Deliver" drink with a print statement
@@ -101,6 +119,7 @@ def coffee_machine():
 
 
 coffee_machine()
+
 
 """
 Coffee Machine Program Requirements
