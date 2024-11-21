@@ -92,8 +92,10 @@ def payment(order):
     # If less than cost return False
         return False
 
-def update_inventory():
+def update_inventory(order):
     # Deduct ingredients of selection from current resources
+    for ingredient in order["ingredients"]:
+        resources[ingredient] -= order["ingredients"][ingredient]
 
 def coffee_machine():
     # Instantiate variable for loop (not "off")
@@ -119,6 +121,7 @@ def coffee_machine():
             # Check if resources sufficient
             check_inventory(order)
             # Deduct ingredients of selection from current resources
+            update_inventory(order)
 
     # TODO: 7. "Deliver" drink with a print statement
     # "Deliver" drink order
