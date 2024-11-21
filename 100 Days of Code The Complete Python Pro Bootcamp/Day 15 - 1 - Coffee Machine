@@ -54,27 +54,34 @@ print(MENU["espresso"]["cost"]) # 1.5
 # TODO: 3. Check if resources are sufficient for order
 # Create function to check inventory
 def check_inventory(order):
-    # Load dictionary of inventory into variables
-    # inventory_water, inventory_milk, inventory_coffee = resources["water"], resources["milk"], resources["coffee"]
-
     # Compare each ingredient amount to inventory amount
     for ingredient in order["ingredients"]:
-        if order["ingredients"][ingredient]  <= resources[ingredient]:
-            continue
-        else:
+        if order["ingredients"][ingredient]  > resources[ingredient]:
             print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
             Return False
     Return True
 
 # Create function for payment
-def payment():
+def payment(order):
+    # Instantiate variable for the cost the drink ordered
+    cost = order["cost"]
+
     # TODO: 4. Prompt users for payment ("Please insert coins.")
     # Prompt user for payment
+    print("Please insert coins.")
 
     # TODO: 5. Prompt user for quantity of each coin (Quarters, dimes, nickles, pennies)
+    # Prompt user for quantity of each coin
+    quarters = input("How many quarters? ")
+    dimes = input("How many dimes? ")
+    nickels = input("How many nickels? ")
+    pennies = input("How many pennies? ")
+    
     # Tally up payment
-
+    total = (quarters * .25) + (dimes * .10) + (nickels * .05) + pennies
+    
     # Compare payment to cost
+    if total > cost:
         # TODO: 6. Return change ("Here is x in change.)
         # If greater than cost, "return change" and return True
         # If equal to cost return True
@@ -93,23 +100,17 @@ def coffee_machine():
 
         # TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino)
         # Prompt user for order
+        order = input(""What would you like? (espresso/latte/cappuccino): ")
 
         # Call payment function
+        if not payment(order): # False
             # Break loop if payment insufficient
 
         # If Else Conditions for menu options
         # If "report
             # TODO: 1. Print report of resources left
             # Print out current inventory of resources
-        # If "espresso"
-            # Check if resources sufficient
-            check_inventory(order)
-            # Deduct ingredients of selection from current resources
-        # If "latte"
-            # Check if resources sufficient
-            check_inventory(order)
-            # Deduct ingredients of selection from current resources
-        # If "cappuccino"
+        else:
             # Check if resources sufficient
             check_inventory(order)
             # Deduct ingredients of selection from current resources
