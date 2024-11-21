@@ -50,6 +50,52 @@ resources = {
 # TODO: 7. "Deliver" drink with a print statement
 # TODO: 8. Repeat loop
 
+# Create function to check inventory
+    # Load dictionary of inventory into variables
+        # Compare water inventory to required water
+        # Compare milk inventory to required milk
+        # Compare coffee inventory to required coffee
+    # Return True
+
+# Create function for payment
+    # Prompt user for payment
+    
+    # Tally up payment
+    
+    # Compare payment to cost
+        # If greater than cost, "return change" and return True
+        # If equal to cost return True
+        # If less than cost return False
+
+def coffee_machine():
+    # Instantiate variable for loop (not "off")
+    # Instantiate variable for payment
+
+    # Start the loop
+        # Instantiate variable for user order     
+        
+        # Prompt user for order
+        
+        # Call payment function
+            # Break loop if payment insufficient 
+        
+        # If Else Conditions for menu options
+        # If "report"
+            # Print out current inventory of resources
+        # If "espresso"
+            # Check if resources sufficient
+            # Deduct ingredients of selection from current resources
+        # If "latte"
+            # Check if resources sufficient
+            # Deduct ingredients of selection from current resources
+        # If "cappuccino"
+            # Check if resources sufficient
+            # Deduct ingredients of selection from current resources
+
+    # "Deliver" drink order
+
+
+coffee_machine()
 
 """
 Coffee Machine Program Requirements
@@ -105,3 +151,4 @@ Coffee Machine Program Requirements
         Money: $2.5
     b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If latte was their choice of drink.
 """
+
