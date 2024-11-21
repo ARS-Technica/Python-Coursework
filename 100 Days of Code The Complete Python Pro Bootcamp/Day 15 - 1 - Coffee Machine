@@ -41,16 +41,10 @@ resources = {
     "coffee": 100,
 }
 
-# TODO: 1. Print report of resources left
-# TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino):
-# TODO: 3. Check if resources are sufficient for order
-# TODO: 4. Prompt users for payment ("Please insert coins.")
-# TODO: 5. Prompt user for quantity of each coin (Quarters, dimes, nickles, pennies)
-# TODO: 6. Return change ("Here is x in change.)
-# TODO: 7. "Deliver" drink with a print statement
-# TODO: 8. Repeat loop
 
+# TODO: 3. Check if resources are sufficient for order
 # Create function to check inventory
+def check_inventory():
     # Load dictionary of inventory into variables
         # Compare water inventory to required water
         # Compare milk inventory to required milk
@@ -58,29 +52,39 @@ resources = {
     # Return True
 
 # Create function for payment
+def payment():
+    # TODO: 4. Prompt users for payment ("Please insert coins.")
     # Prompt user for payment
-    
+
+    # TODO: 5. Prompt user for quantity of each coin (Quarters, dimes, nickles, pennies)
     # Tally up payment
-    
+
     # Compare payment to cost
+        # TODO: 6. Return change ("Here is x in change.)
         # If greater than cost, "return change" and return True
         # If equal to cost return True
         # If less than cost return False
+
+def update_inventory():
+    # Deduct ingredients of selection from current resources
 
 def coffee_machine():
     # Instantiate variable for loop (not "off")
     # Instantiate variable for payment
 
+    # TODO: 8. Repeat loop
     # Start the loop
-        # Instantiate variable for user order     
-        
+        # Instantiate variable for user order
+
+        # TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino)
         # Prompt user for order
-        
+
         # Call payment function
-            # Break loop if payment insufficient 
-        
+            # Break loop if payment insufficient
+
         # If Else Conditions for menu options
-        # If "report"
+        # If "report
+            # TODO: 1. Print report of resources left
             # Print out current inventory of resources
         # If "espresso"
             # Check if resources sufficient
@@ -92,6 +96,7 @@ def coffee_machine():
             # Check if resources sufficient
             # Deduct ingredients of selection from current resources
 
+    # TODO: 7. "Deliver" drink with a print statement
     # "Deliver" drink order
 
 
