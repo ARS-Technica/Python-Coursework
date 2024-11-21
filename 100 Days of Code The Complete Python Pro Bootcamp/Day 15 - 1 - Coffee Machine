@@ -76,16 +76,21 @@ def payment(order):
     dimes = input("How many dimes? ")
     nickels = input("How many nickels? ")
     pennies = input("How many pennies? ")
-    
+
     # Tally up payment
     total = (quarters * .25) + (dimes * .10) + (nickels * .05) + pennies
-    
+    change = (total - cost)
+    # TODO: 6. Return change ("Here is x in change.)
     # Compare payment to cost
-    if total > cost:
-        # TODO: 6. Return change ("Here is x in change.)
+    if change > 0:
         # If greater than cost, "return change" and return True
-        # If equal to cost return True
-        # If less than cost return False
+        print(f"Here is {change} in change.")
+        return True
+    # If equal to cost return True
+    elif change = 0:
+        return True
+    # If less than cost return False
+        return False
 
 def update_inventory():
     # Deduct ingredients of selection from current resources
