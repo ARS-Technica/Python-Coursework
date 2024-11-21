@@ -58,11 +58,11 @@ def check_inventory(order):
     for ingredient in order["ingredients"]:
         if order["ingredients"][ingredient]  > resources[ingredient]:
             print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
-            Return False
-    Return True
+            return False
+    return True
 
 # Create function for payment
-def payment(order):
+def payment(order, revenue):
     # Instantiate variable for the cost the drink ordered
     cost = order["cost"]
 
@@ -84,12 +84,15 @@ def payment(order):
     # Compare payment to cost
     if change > 0:
         # If greater than cost, "return change" and return True
-        print(f"Here is {change} in change.")
+        print(f"Here is {change:.2} in change.")
+        revenue = revenue + cost
         return True
     # If equal to cost return True
-    elif change = 0:
+    elif change == 0:
         return True
     # If less than cost return False
+    else:
+        print("Sorry that's not enough money. Money refunded.")
         return False
 
 def update_inventory(order):
@@ -99,24 +102,37 @@ def update_inventory(order):
 
 def coffee_machine():
     # Instantiate variable for loop (not "off")
-    # Instantiate variable for payment
+    not_off = True
+    # Instantiate variable for tracking gross revenue
+    revenue = 0
 
     # TODO: 8. Repeat loop
     # Start the loop
-        # Instantiate variable for user order
-
+    while not_off == True:
         # TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino)
+        # Instantiate variable for user order
         # Prompt user for order
-        order = input(""What would you like? (espresso/latte/cappuccino): ")
+        order = input("What would you like? (espresso/latte/cappuccino): ")
 
         # Call payment function
-        if not payment(order): # False
+        if not payment(order, revenue): # False
             # Break loop if payment insufficient
+            coffee_machine()
 
         # If Else Conditions for menu options
-        # If "report
+        if order == "report":
             # TODO: 1. Print report of resources left
             # Print out current inventory of resources
+            #for key, value in resources.items():
+            #    print(f"{key}: {value}")
+
+            print(f"Water: {resources['water']}ml")
+            print(f"Milk: {resources['milk']}ml")
+            print(f"Coffee: {resources['coffee']}g")
+            print(f"Money: ${revenue}")
+
+        elif "off":
+            not_off = False
         else:
             # Check if resources sufficient
             check_inventory(order)
