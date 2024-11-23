@@ -116,7 +116,6 @@ def coffee_machine():
         # TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino)
         # Instantiate variable for user order
         # Prompt user for order
-
         order = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
         # If Else Conditions for menu options
@@ -131,19 +130,19 @@ def coffee_machine():
             not_off = False
         else:
             # Call payment function
-            if payment(order):  # True
-                # Check if resources sufficient
-                if check_inventory(order):
-                    # TODO: 7. "Deliver" drink with a print statement
-                    # "Deliver" drink order
-                    print(f"Here is your {order}. Enjoy!")
-                    # Deduct ingredients of selection from current resources
-                    update_inventory(order)
+            # Check if resources sufficient
+            if payment(order) and check_inventory(order):
+                # TODO: 7. "Deliver" drink with a print statement
+                # "Deliver" drink order
+                print(f"Here is your {order}. Enjoy!")
+                # Deduct ingredients of selection from current resources
+                update_inventory(order)
             else:
                 # Break loop if payment insufficient
                 coffee_machine()
 
-coffee_machine()
+if __name__ == "__main__":
+    coffee_machine()
 
 
 """
