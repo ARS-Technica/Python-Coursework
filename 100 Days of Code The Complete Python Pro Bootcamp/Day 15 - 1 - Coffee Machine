@@ -55,16 +55,32 @@ print(MENU["espresso"]["cost"]) # 1.5
 # Create function to check inventory
 def check_inventory(order):
     # Compare each ingredient amount to inventory amount
-    for ingredient in order["ingredients"]:
-        if order["ingredients"][ingredient]  > resources[ingredient]:
+    for ingredient, amount in order["ingredients"].items():
+        if amount  > resources[ingredient]:
             print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
             return False
     return True
 
+'''
+# TODO: 3. Check if resources are sufficient for order
+# Create function to check inventory
+def check_inventory(order):
+    print(f"check_inventory order: ", order)
+    # Compare each ingredient amount to inventory amount
+    for ingredient in order["ingredients"]:
+        print(order["ingredients"][ingredient])
+        """
+        if order["ingredients"][ingredient]  > resources[ingredient]:
+            print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
+            return False
+        """
+    return True
+'''
+
 # Create function for payment
 def payment(order, revenue):
     # Instantiate variable for the cost the drink ordered
-    cost = order["cost"]
+    cost = MENU[order]["cost"]
 
     # TODO: 4. Prompt users for payment ("Please insert coins.")
     # Prompt user for payment
@@ -72,10 +88,10 @@ def payment(order, revenue):
 
     # TODO: 5. Prompt user for quantity of each coin (Quarters, dimes, nickles, pennies)
     # Prompt user for quantity of each coin
-    quarters = input("How many quarters? ")
-    dimes = input("How many dimes? ")
-    nickels = input("How many nickels? ")
-    pennies = input("How many pennies? ")
+    quarters = int(input("How many quarters? "))
+    dimes = int(input("How many dimes? "))
+    nickels = int(input("How many nickels? "))
+    pennies = int(input("How many pennies? "))
 
     # Tally up payment
     total = (quarters * .25) + (dimes * .10) + (nickels * .05) + pennies
@@ -84,7 +100,7 @@ def payment(order, revenue):
     # Compare payment to cost
     if change > 0:
         # If greater than cost, "return change" and return True
-        print(f"Here is {change:.2} in change.")
+        print(f"Here is ${change:.2} in change.")
         revenue = revenue + cost
         return True
     # If equal to cost return True
@@ -95,10 +111,16 @@ def payment(order, revenue):
         print("Sorry that's not enough money. Money refunded.")
         return False
 
+"""
 def update_inventory(order):
     # Deduct ingredients of selection from current resources
     for ingredient in order["ingredients"]:
         resources[ingredient] -= order["ingredients"][ingredient]
+"""
+def update_inventory(order):
+    # Deduct ingredients of selection from current resources
+    for ingredient, amount in order["ingredients"].items():
+        resources[ingredient] -= amount
 
 def coffee_machine():
     # Instantiate variable for loop (not "off")
@@ -114,33 +136,39 @@ def coffee_machine():
         # Prompt user for order
         order = input("What would you like? (espresso/latte/cappuccino): ")
 
+        """
         # Call payment function
-        if not payment(order, revenue): # False
+        if payment(order, revenue): # True
+            pass
+        else:
             # Break loop if payment insufficient
             coffee_machine()
+        """
 
         # If Else Conditions for menu options
         if order == "report":
             # TODO: 1. Print report of resources left
             # Print out current inventory of resources
-            #for key, value in resources.items():
-            #    print(f"{key}: {value}")
-
             print(f"Water: {resources['water']}ml")
             print(f"Milk: {resources['milk']}ml")
             print(f"Coffee: {resources['coffee']}g")
             print(f"Money: ${revenue}")
-
-        elif "off":
+        elif order == "off":
             not_off = False
         else:
-            # Check if resources sufficient
-            check_inventory(order)
-            # Deduct ingredients of selection from current resources
-            update_inventory(order)
+            # Call payment function
+            if payment(order, revenue):  # True
+                # Check if resources sufficient
+                check_inventory(order)
+                # Deduct ingredients of selection from current resources
+                update_inventory(order)
+            else:
+                # Break loop if payment insufficient
+                coffee_machine()
 
     # TODO: 7. "Deliver" drink with a print statement
     # "Deliver" drink order
+    print(f"Here is your {order}. Enjoy!")
 
 
 coffee_machine()
