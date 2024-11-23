@@ -9,62 +9,65 @@ Created on Wed Nov 20 18:32:02 2024
 """
 
 
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+"""
+print(MENU["espresso"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
+print(MENU["espresso"]["ingredients"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
+print(MENU["espresso"]["ingredients"]["water"]) # 50
+print(MENU["espresso"]["ingredients"]["milk"]) # KeyError: 'milk'
+
+print(MENU["espresso"]["cost"]) # 1.5
+"""
+
+
+# TODO: 3. Check if resources are sufficient for order
+# Create function to check inventory
 def check_inventory(order):
+    # print(f"check_inventory order: ", order)
+    # Compare each ingredient amount to inventory amount
     for ingredient, amount in MENU[order]["ingredients"].items():
         if amount > resources[ingredient]:
             print(f"Sorry, there's not enough {ingredient}.")
             return False
     return True
 
-"""
-def check_inventory(order):
-    print(f"'order: {order}")
-    for ingredient, amount in order["ingredients"].items():
-        print(f"ingredient: {ingredient}, amount: {amount}")      
-        print(f"order['ingredients']: {order['ingredients']}")
-        print(f"resources[ingredient]: {resources[ingredient]}")
-        
-        '''
-        if amount > resources[ingredient]:
-            print(f"Sorry, there's not enough {ingredient}.")
-            return False
-        '''
-    return True
-"""
-
-"""
-# TODO: 3. Check if resources are sufficient for order
-# Create function to check inventory
-def check_inventory(order):
-        
-    # Compare each ingredient amount to inventory amount
-    for ingredient, amount in order["ingredients"].items():
-        #print(f"ingredient: {ingredient} {type(ingredient)} \n amount: {amount}, {type(amount)} \n")
-        #print(f" order: {order['ingredients']} \n resources[ingredient]: {resources[ingredient]}")
-        
-        if amount  > resources[ingredient]:
-            print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
-            return False
-    return True
-"""
-'''
-# TODO: 3. Check if resources are sufficient for order
-# Create function to check inventory
-def check_inventory(order):
-    print(f"check_inventory order: ", order)
-    # Compare each ingredient amount to inventory amount
-    for ingredient in order["ingredients"]:
-        print(order["ingredients"][ingredient])
-        """
-        if order["ingredients"][ingredient]  > resources[ingredient]:
-            print(f"This beverage is currently unavailable.  There is not enough {ingredient}.")
-            return False
-        """
-    return True
-'''
-
 # Create function for payment
-def payment(order, revenue):
+def payment(order):
+    global revenue
+    # Instantiate variable for tracking total earnings (for report)
+    #revenue = 0
+
     # Instantiate variable for the cost the drink ordered
     cost = MENU[order]["cost"]
 
@@ -80,29 +83,24 @@ def payment(order, revenue):
     pennies = int(input("How many pennies? "))
 
     # Tally up payment
-    total = (quarters * .25) + (dimes * .10) + (nickels * .05) + pennies
+    total = (quarters * .25) + (dimes * .10) + (nickels * .05) + (pennies * .01)
     change = (total - cost)
     # TODO: 6. Return change ("Here is x in change.)
     # Compare payment to cost
     if change > 0:
         # If greater than cost, "return change" and return True
         print(f"Here is ${change:.2} in change.")
-        revenue = revenue + cost
+        revenue += cost
         return True
     # If equal to cost return True
     elif change == 0:
+        revenue += cost
         return True
     # If less than cost return False
     else:
         print("Sorry that's not enough money. Money refunded.")
         return False
 
-"""
-def update_inventory(order):
-    # Deduct ingredients of selection from current resources
-    for ingredient in order["ingredients"]:
-        resources[ingredient] -= order["ingredients"][ingredient]
-"""
 def update_inventory(order):
     # Deduct ingredients of selection from current resources
     for ingredient, amount in MENU[order]["ingredients"].items():
@@ -111,7 +109,8 @@ def update_inventory(order):
 def coffee_machine():
     # Instantiate variable for loop (not "off")
     not_off = True
-    # Instantiate variable for tracking gross revenue
+    # Instantiate variable for tracking gross earnings
+    global revenue
     revenue = 0
 
     # TODO: 8. Repeat loop
@@ -120,16 +119,8 @@ def coffee_machine():
         # TODO: 2. Prompt user for order ("What would you like? (espresso/latte/cappuccino)
         # Instantiate variable for user order
         # Prompt user for order
-        order = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
-        """
-        # Call payment function
-        if payment(order, revenue): # True
-            pass
-        else:
-            # Break loop if payment insufficient
-            coffee_machine()
-        """
+        order = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
         # If Else Conditions for menu options
         if order == "report":
@@ -143,19 +134,17 @@ def coffee_machine():
             not_off = False
         else:
             # Call payment function
-            if payment(order, revenue):  # True
+            if payment(order):  # True
                 # Check if resources sufficient
-                check_inventory(order)
-                # Deduct ingredients of selection from current resources
-                update_inventory(order)
+                if check_inventory(order):
+                    # TODO: 7. "Deliver" drink with a print statement
+                    # "Deliver" drink order
+                    print(f"Here is your {order}. Enjoy!")
+                    # Deduct ingredients of selection from current resources
+                    update_inventory(order)
             else:
                 # Break loop if payment insufficient
                 coffee_machine()
-
-    # TODO: 7. "Deliver" drink with a print statement
-    # "Deliver" drink order
-    print(f"Here is your {order}. Enjoy!")
-
 
 coffee_machine()
 
