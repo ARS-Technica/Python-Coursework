@@ -65,9 +65,6 @@ def check_inventory(order):
 # Create function for payment
 def payment(order):
     global revenue
-    # Instantiate variable for tracking total earnings (for report)
-    #revenue = 0
-
     # Instantiate variable for the cost the drink ordered
     cost = MENU[order]["cost"]
 
