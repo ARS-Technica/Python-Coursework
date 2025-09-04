@@ -40,19 +40,19 @@ def coffee_machine():
             not_off = False
         elif order == "report":
             # 3. Print report.
-            # a. When the user enters “report” to the prompt, a report should be generated that shows the current resource values.
             # Print out current inventory of resources
             coffee_maker.report()  # Prints a report of all resources.
             money_machine.report()  # Prints the current profit
         else:
             # Create object to represent drink order
             drink = menu.find_drink(order)
-
+            if drink is None:   # Typo in the user's input
+                continue    # Avoid error
             # 4. Check resources sufficient?
             if coffee_maker.is_resource_sufficient(drink):
                 # coffee_maker.make_coffee(drink)
                 # 5. Process coins.
-                print(f"That will be ${drink.cost:.2f}, please.")
+                print(f"That will be ${drink.cost:.2f}, please.") # Prompt user with price.
                 if money_machine.make_payment(drink.cost):
                 # Returns True when payment is accepted, or False if insufficient.
                     # 7. Make Coffee.
