@@ -20,11 +20,7 @@ coffee_maker = CoffeeMaker()
 menu = Menu()
 money_machine = MoneyMachine()
 
-# 3. Print report.
-# a. When the user enters “report” to the prompt, a report should be generated that shows the
-# current resource values. e.g.
-coffee_maker.report()   # Prints a report of all resources.
-money_machine.report()  # Prints the current profit
+
 
 
 def coffee_machine():
@@ -43,16 +39,15 @@ def coffee_machine():
         order = input("What would you like? ({options}): ").lower()
 
         # If Else Conditions for menu options
-        if order == "report":
-            # TODO: 1. Print report of resources left
-            # Print out current inventory of resources
-            print(f"Water: {resources['water']}ml")
-            print(f"Milk: {resources['milk']}ml")
-            print(f"Coffee: {resources['coffee']}g")
-            print(f"Money: ${revenue}")
-        elif order == "off":
+        if order == "off":
             # 2. Turn off the Coffee Machine by entering “ off ” to the prompt.
             not_off = False
+        elif order == "report":
+            # 3. Print report.
+            # a. When the user enters “report” to the prompt, a report should be generated that shows the current resource values.
+            # Print out current inventory of resources
+            coffee_maker.report()  # Prints a report of all resources.
+            money_machine.report()  # Prints the current profit
         else:
             # Call payment function
             # Check if resources sufficient
@@ -90,7 +85,7 @@ coffee_maker.is_resource_sufficient(drink)
 
 
 
- 
+
 
 
 
