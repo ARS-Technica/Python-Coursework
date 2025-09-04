@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """
 100 Days of Code The Complete Python Pro Bootcamp for 2023
 Day 16 - Intermediate - Object Oriented Programming (OOP)
@@ -20,9 +19,6 @@ coffee_maker = CoffeeMaker()
 menu = Menu()
 money_machine = MoneyMachine()
 
-
-
-
 def coffee_machine():
     # Instantiate variable for loop (not "off")
     not_off = True
@@ -36,7 +32,7 @@ def coffee_machine():
         # 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/):
         # Instantiate variable for user order
         # Prompt user for order
-        order = input("What would you like? ({options}): ").lower()
+        order = input(f"What would you like? ({options}): ").lower()
 
         # If Else Conditions for menu options
         if order == "off":
@@ -49,28 +45,23 @@ def coffee_machine():
             coffee_maker.report()  # Prints a report of all resources.
             money_machine.report()  # Prints the current profit
         else:
-            # Call payment function
-            # Check if resources sufficient
-            if payment(order) and check_inventory(order):
-                # TODO: 7. "Deliver" drink with a print statement
-                # "Deliver" drink order
-                print(f"Here is your {order}. Enjoy!")
-                # Deduct ingredients of selection from current resources
-                update_inventory(order)
+            drink = menu.find_drink(order)
+            # print(drink)
+            # 4. Check resources sufficient?
+            if coffee_maker.is_resource_sufficient(drink):
+                # coffee_maker.make_coffee(drink)
+                # 5. Process coins.
+                if money_machine.make_payment(drink.cost):
+                # Returns True when payment is accepted, or False if insufficient.
+                    coffee_maker.make_coffee(drink)
+                    # Deducts the required ingredients from the resources.
+
             else:
-                # Break loop if payment insufficient
-                coffee_machine()
+                print(" Sorry there is not enough water. ")
 
 if __name__ == "__main__":
     coffee_machine()
 
-
-
-
-# 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/):
-# a. Check the user’s input to decide what to do next.
-# b. The prompt should show every time action has completed, e.g. once the drink is
-# dispensed. The prompt should show again to serve the next customer.
 
 
 # 4. Check resources sufficient?
@@ -78,18 +69,6 @@ if __name__ == "__main__":
 # b. E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should not
 # continue to make the drink but print: “ Sorry there is not enough water. ”
 # c. The same should happen if another resource is depleted, e.g. milk or coffee.
-coffee_maker.is_resource_sufficient(drink)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
