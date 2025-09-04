@@ -12,10 +12,16 @@ Coffee Machine Documentation:
 https://replit.com/@appbrewery/oop-coffee-machine-start
 """
 
-
-import menu import Menu, MenuItem
+from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
+
+coffee_maker = CoffeeMaker()
+money_machine = MoneyMachine()
+
+coffee_maker.report()   # Prints a report of all resources.
+money_machine.report()  # Prints the current profit
+
 
 # 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/): ”
 # a. Check the user’s input to decide what to do next.
@@ -86,9 +92,9 @@ from money_machine import MoneyMachine
 # b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If latte
 # was their choice of drink.
 
-if __name__ == "__main__":
-    coffee_machine()
-    
+
+
+
 #%%
 
 MENU = {
@@ -122,15 +128,6 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-
-"""
-print(MENU["espresso"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
-print(MENU["espresso"]["ingredients"]) # {'ingredients': {'water': 50, 'coffee': 18}, 'cost': 1.5}
-print(MENU["espresso"]["ingredients"]["water"]) # 50
-print(MENU["espresso"]["ingredients"]["milk"]) # KeyError: 'milk'
-
-print(MENU["espresso"]["cost"]) # 1.5
-"""
 
 
 # Create function to check inventory
