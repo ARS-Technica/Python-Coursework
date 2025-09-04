@@ -17,39 +17,85 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 coffee_maker = CoffeeMaker()
+menu = Menu()
 money_machine = MoneyMachine()
 
+# 3. Print report.
+# a. When the user enters “report” to the prompt, a report should be generated that shows the
+# current resource values. e.g.
 coffee_maker.report()   # Prints a report of all resources.
 money_machine.report()  # Prints the current profit
 
 
-# 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/): ”
+def coffee_machine():
+    # Instantiate variable for loop (not "off")
+    not_off = True
+    # Instantiate variable for tracking gross earnings
+    global revenue
+    revenue = 0
+
+    # Start the loop
+    while not_off == True:
+        options = menu.get_items()
+        # 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/):
+        # Instantiate variable for user order
+        # Prompt user for order
+        order = input("What would you like? ({options}): ").lower()
+
+        # If Else Conditions for menu options
+        if order == "report":
+            # TODO: 1. Print report of resources left
+            # Print out current inventory of resources
+            print(f"Water: {resources['water']}ml")
+            print(f"Milk: {resources['milk']}ml")
+            print(f"Coffee: {resources['coffee']}g")
+            print(f"Money: ${revenue}")
+        elif order == "off":
+            # 2. Turn off the Coffee Machine by entering “ off ” to the prompt.
+            not_off = False
+        else:
+            # Call payment function
+            # Check if resources sufficient
+            if payment(order) and check_inventory(order):
+                # TODO: 7. "Deliver" drink with a print statement
+                # "Deliver" drink order
+                print(f"Here is your {order}. Enjoy!")
+                # Deduct ingredients of selection from current resources
+                update_inventory(order)
+            else:
+                # Break loop if payment insufficient
+                coffee_machine()
+
+if __name__ == "__main__":
+    coffee_machine()
+
+
+
+
+# 1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino/):
 # a. Check the user’s input to decide what to do next.
 # b. The prompt should show every time action has completed, e.g. once the drink is
 # dispensed. The prompt should show again to serve the next customer.
 
 
-
-# 2. Turn off the Coffee Machine by entering “ off ” to the prompt.
-# a. For maintainers of the coffee machine, they can use “off” as the secret word to turn off the
-# machine. Your code should end execution when this happens.
-
-
-# 3. Print report.
-# a. When the user enters “report” to the prompt, a report should be generated that shows the
-# current resource values. e.g.
-# Water: 100ml
-# Milk: 50ml
-# Coffee: 76g
-# Money: $2.5
-
-
 # 4. Check resources sufficient?
-# a. When the user chooses a drink, the program should check if there are enough resources
-# to make that drink.
+# a. When the user chooses a drink, the program should check if there are enough resources to make that drink.
 # b. E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should not
 # continue to make the drink but print: “ Sorry there is not enough water. ”
 # c. The same should happen if another resource is depleted, e.g. milk or coffee.
+coffee_maker.is_resource_sufficient(drink)
+
+
+
+
+
+
+ 
+
+
+
+
+
 
 
 # 5. Process coins.
